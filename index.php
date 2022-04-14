@@ -11,7 +11,6 @@
         <p>Derniers billets du blog :</p>
  
         <?php
-        // Connexion à la base de données
         try
         {
         	$bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', 'root');
@@ -21,7 +20,6 @@
                 die('Erreur : '.$e->getMessage());
         }
 
-        // On récupère les 5 derniers billets
         $req = $bdd->query('SELECT id, titre, contenu, DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS date_creation_fr FROM billets ORDER BY date_creation DESC LIMIT 0, 5');
 
         while ($data = $req->fetch())
@@ -35,7 +33,6 @@
             
             <p>
             <?php
-            // On affiche le contenu du billet
             echo nl2br(htmlspecialchars($data['contenu']));
             ?>
             <br />
@@ -43,7 +40,7 @@
             </p>
         </div>
         <?php
-        } // Fin de la boucle des billets
+        }
         $req->closeCursor();
         ?>
     </body>
