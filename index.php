@@ -26,6 +26,9 @@ if (isset($_GET['action'])) {
             echo 'Erreur : aucun identifiant de billet envoyé';
         }
     }
+    else {
+        echo = 'Erreur : action inconnue';
+    }
 }
 else {
     listPosts();
