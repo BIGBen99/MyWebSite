@@ -9,8 +9,14 @@ CREATE TABLE `comments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ALTER TABLE `comments`
-    ADD PRIMARY KEY(`id`);
-    
+    ADD PRIMARY KEY(`id`),
+    ADD KEY `FK_POSTS`(`post_id`);
+
+ALTER TABLE `comments`
+    ADD FOREIGN KEY(`post_id`)
+        REFERENCES `posts`(`id`)
+        ON UPDATE CASCADE ON DELETE CASCADE;
+
 ALTER TABLE `comments`
     MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT;
     
