@@ -1,5 +1,5 @@
 <?php
-require('../mywebsite.php')
+require('../mywebsite.php');
 require('controller/frontend.php');
 
 try {
