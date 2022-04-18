@@ -23,6 +23,6 @@ class CommentManager extends \BIGBen\MyWebSite\Model\Manager {
     public function updateComment($commentId, $author, $comment) {
         $db = $this->dbConnect();
         $comments = $db->prepare('UPDATE comments SET author = ?, comment = ?, comment_date = NOW() WHERE id = ' . $commentId);
-        $affectedLines = $comment->excute(array($author, $comment));
+        $affectedLines = $comment->execute(array($author, $comment));
     }
 }
