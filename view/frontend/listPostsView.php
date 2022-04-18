@@ -1,16 +1,12 @@
 <?php $title = 'Mon blog'; ?>
 
 <?php ob_start(); ?>
-
-    <?php
+<?php
 foreach ($posts as $post):
 ?>
     <article class="news">
         <header>
-        <h2>
-            <?= htmlspecialchars($post['title']) ?>
-            le <time><?= $post['creation_date_fr'] ?></time>
-        </h2>
+            <h2><?= htmlspecialchars($post['title']) ?> le <time><?= $post['creation_date'] ?></time></h2>
         </header>
         <p>
             <?= nl2br(htmlspecialchars($post['content'])) ?>

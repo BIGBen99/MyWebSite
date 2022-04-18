@@ -1,37 +1,31 @@
 <?php $title = 'Mon blog'; ?>
 
 <?php ob_start(); ?>
-        <p><a href="?action=listPosts">Retour à la liste des billets</a></p>
+    <p><a href="?action=listPosts">Retour à la liste des billets</a></p>
 
-        <div class="news">
-            <h3>
-                <?= htmlspecialchars($post['title']) ?>
-                <em>le <?= $post['creation_date_fr'] ?></em>
-            </h3>
-            
-            <p>
-                <?= nl2br(htmlspecialchars($post['content'])) ?>
-            </p>
+    <div class="news">
+        <h2><?= htmlspecialchars($post['title']) ?> le <time><?= $post['creation_date'] ?></time></h2>
+        <p><?= nl2br(htmlspecialchars($post['content'])) ?></p>
+    </div>
+
+    <h2>Commentaires</h2>
+
+    <form action="?action=addComment&id=<?= $post['id'] ?>" method="post">
+        <div>
+            <label for="author">Auteur</label><br />
+            <input type="text" id="author" name="author" />
         </div>
+        <div>
+            <label for="comment">Commentaire</label><br />
+            <textarea id="comment" name="comment"></textarea>
+        </div>
+        <div>
+            <input type="submit" />
+        </div>
+    </form>
 
-        <h2>Commentaires</h2>
-
-        <form action="?action=addComment&id=<?= $post['id'] ?>" method="post">
-            <div>
-                <label for="author">Auteur</label><br />
-                <input type="text" id="author" name="author" />
-            </div>
-            <div>
-                <label for="comment">Commentaire</label><br />
-                <textarea id="comment" name="comment"></textarea>
-            </div>
-            <div>
-                <input type="submit" />
-            </div>
-        </form>
-
-        <?php
-        while ($comment = $comments->fetch()) {
+<?php
+    foreach ($comments as $comment):
             if(isset($commentId) && $comment['id'] == $commentId) {
         ?>
             <form action="?action=updateComment&postId=<?= $post['id'] ?>&commentId=<?= $comment['id'] ?>" method="post">
@@ -46,7 +40,7 @@
             <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
         <?php
             }
-        }
+        endforeach;
         ?>
 <?php $content = ob_get_clean(); ?>
 

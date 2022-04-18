@@ -1,12 +1,11 @@
 <?php
-
 // Chargement des classes
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 
 function listPosts() {
-    $postManager = new \BIGBen\MyWebSite\Model\PostManager(); // Création d'un objet
-    $posts = $postManager->getPosts(); // Appel d'une fonction de cet objet
+    $postManager = new \BIGBen\MyWebSite\Model\PostManager();
+    $posts = $postManager->getPosts();
 
     require('view/frontend/listPostsView.php');
 }
@@ -28,8 +27,7 @@ function addComment($postId, $author, $comment) {
 
     if ($affectedLines === false) {
         throw new Exception('Impossible d\'ajouter le commentaire !');
-    }
-    else {
+    } else {
         header('Location: ?action=post&id=' . $postId);
     }
 }
