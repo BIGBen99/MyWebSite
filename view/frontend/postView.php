@@ -39,7 +39,7 @@
 
         <?php
         while ($comment = $comments->fetch()) {
-            if(isset($commentId)) {
+            if(isset($commentId) && $comment['id'] == $commentId) {
         ?>
             <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
             <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
