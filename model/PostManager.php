@@ -1,4 +1,6 @@
 <?php
+namespace BIGBen\MyWebSite\Model;
+
 require_once("model/Manager.php");
 
 class PostManager extends Manager {
