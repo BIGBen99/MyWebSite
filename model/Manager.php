@@ -1,4 +1,5 @@
 <?php
+namespace BIGBen\MyWebSite\Model;
 
 class Manager {
     protected function dbConnect() {
