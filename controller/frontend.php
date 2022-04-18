@@ -5,15 +5,15 @@ require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 
 function listPosts() {
-    $postManager = new PostManager(); // Création d'un objet
+    $postManager = new \BIGBen\MyWebSite\Model\PostManager(); // Création d'un objet
     $posts = $postManager->getPosts(); // Appel d'une fonction de cet objet
 
     require('view/frontend/listPostsView.php');
 }
 
 function post() {
-    $postManager = new PostManager();
-    $commentManager = new CommentManager();
+    $postManager = new \BIGBen\MyWebSite\Model\PostManager();
+    $commentManager = new \BIGBen\MyWebSite\Model\CommentManager();
 
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentManager->getComments($_GET['id']);
@@ -22,7 +22,7 @@ function post() {
 }
 
 function addComment($postId, $author, $comment) {
-    $commentManager = new CommentManager();
+    $commentManager = new \BIGBen\MyWebSite\Model\CommentManager();
 
     $affectedLines = $commentManager->postComment($postId, $author, $comment);
 
