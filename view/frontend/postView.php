@@ -1,4 +1,4 @@
-<?php $title = 'Mon blog'; ?>
+<?php $title = 'Mon blog - ' . $post['title']; ?>
 
 <?php ob_start(); ?>
     <p><a href="?action=listPosts">Retour à la liste des billets</a></p>
