@@ -18,6 +18,7 @@ foreach ($posts as $post):
             <em><a href="?action=post&id=<?= $post['id'] ?>">Commentaires</a></em>
         </p>
     </article>
+    <hr />
 <?php
 endforeach;
 $posts->closeCursor();
