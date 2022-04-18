@@ -9,7 +9,7 @@ foreach ($posts as $post):
         <header>
         <h1>
             <?= htmlspecialchars($post['title']) ?>
-            <time>le <?= $post['creation_date_fr'] ?></time>
+            le <time><?= $post['creation_date_fr'] ?></time>
         </h1>
         </header>
         <p>
