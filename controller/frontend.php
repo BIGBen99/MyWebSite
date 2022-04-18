@@ -39,7 +39,7 @@ function modifyComment($postId, $commentId) {
     $commentManager = new \BIGBen\MyWebSite\Model\CommentManager();
 
     $post = $postManager->getPost($postId);
-    $comments = $commentManager->getComment($postId);
+    $comments = $commentManager->getComments($postId);
 
     require('view/frontend/postView.php');
 }
