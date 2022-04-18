@@ -38,6 +38,19 @@ try {
         elseif ($_GET['action'] == 'modifyComment') {
             if(isset($_GET['postId']) && $_GET['postId'] > 0 && isset($_GET['commentId']) && $_GET['commentId'] > 0) {
                 modifyComment($_GET['postId'], $_GET['commentId']);
+            } else {
+                throw new Exception('Identifiant de billet et/ou de commentaire absent');
+            }
+        }
+        elseif ($_GET['action'] == 'updateComment') {
+            if (isset($_GET['postId']) && $_GET['postId'] > 0 && isset($_GET['commentId']) && $_GET['commentId'] > 0) {
+                if (!empty($_POST['author']) && !empty($_POST['comment'])) {
+                    updateComment($_GET['postId'], $_GET['commentId'], $_POST['author'], $_POST['comment']);
+                }
+                else {
+                    // Autre exception
+                    throw new Exception('Tous les champs ne sont pas remplis !');
+                }
             }
         }
         else {

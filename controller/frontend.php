@@ -43,3 +43,15 @@ function modifyComment($postId, $commentId) {
 
     require('view/frontend/postView.php');
 }
+
+function updateComment($postId, $commentId, $author, $comment) {
+    $commentManager = new \BIGBen\MyWebSite\Model\CommentManager();
+
+    $affectedLines = $commentMananger->updateComment($commentId, $author, $comment);
+
+    if ($affectedLines === false) {
+        throw new Exception('Impossible de mettre à jour le commentaire !');
+    } else {
+        header('Location: ?action=post&id=' . $postId)
+    }
+}
