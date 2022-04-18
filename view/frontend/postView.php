@@ -39,10 +39,17 @@
 
         <?php
         while ($comment = $comments->fetch()) {
+            if(isset($commentId)) {
+        ?>
+            <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
+            <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+        <?php
+            } else {
         ?>
             <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?> (<a href="?action=modifyComment&postId=<?= $post['id'] ?>&commentId=<?= $comment['id'] ?>">modifier</a>)</p>
             <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
         <?php
+            }
         }
         ?>
     </body>
