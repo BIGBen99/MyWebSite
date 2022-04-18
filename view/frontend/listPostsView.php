@@ -8,25 +8,22 @@
     </header>
     <div id="contenu">
     <?php
-//while ($data = $posts->fetch())
-foreach ($posts as $data):
-//{
+foreach ($posts as $post):
 ?>
     <article class="news">
         <header>
         <h1>
-            <?= htmlspecialchars($data['title']) ?>
-            <time>le <?= $data['creation_date_fr'] ?></time>
+            <?= htmlspecialchars($post['title']) ?>
+            <time>le <?= $post['creation_date_fr'] ?></time>
         </h1>
         </header>
         <p>
-            <?= nl2br(htmlspecialchars($data['content'])) ?>
+            <?= nl2br(htmlspecialchars($post['content'])) ?>
             <br />
-            <em><a href="?action=post&id=<?= $data['id'] ?>">Commentaires</a></em>
+            <em><a href="?action=post&id=<?= $post['id'] ?>">Commentaires</a></em>
         </p>
     </article>
 <?php
-//}
 endforeach;
 $posts->closeCursor();
 ?>
