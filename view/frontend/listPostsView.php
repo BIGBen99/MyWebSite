@@ -7,10 +7,10 @@ foreach ($posts as $post):
 ?>
     <article class="news">
         <header>
-        <h1>
+        <h2>
             <?= htmlspecialchars($post['title']) ?>
             le <time><?= $post['creation_date_fr'] ?></time>
-        </h1>
+        </h2>
         </header>
         <p>
             <?= nl2br(htmlspecialchars($post['content'])) ?>
