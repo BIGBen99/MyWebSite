@@ -11,12 +11,12 @@ function listPosts() {
     require('view/frontend/listPostsView.php');
 }
 
-function post() {
+function post($postId) {
     $postManager = new \BIGBen\MyWebSite\Model\PostManager();
     $commentManager = new \BIGBen\MyWebSite\Model\CommentManager();
 
-    $post = $postManager->getPost($_GET['id']);
-    $comments = $commentManager->getComments($_GET['id']);
+    $post = $postManager->getPost($postId);
+    $comments = $commentManager->getComments($postId);
 
     require('view/frontend/postView.php');
 }
@@ -32,4 +32,14 @@ function addComment($postId, $author, $comment) {
     else {
         header('Location: ?action=post&id=' . $postId);
     }
+}
+
+function modifyComment($postId, $commentId) {
+    $postManager = new \BIGBen\MyWebSite\Model\PostManager();
+    $commentManager = new \BIGBen\MyWebSite\Model\CommentManager();
+
+    $post = $postManager->getPost($postId);
+    $comments = commentManager->getComment($postId);
+
+    require('view/frontend/postView.php');
 }
