@@ -1,4 +1,6 @@
 <?php
+require_once("model/Manager.php");
+
 class PostManager extends Manager {
     public function getPosts() {
         $db = $this->dbConnect();
