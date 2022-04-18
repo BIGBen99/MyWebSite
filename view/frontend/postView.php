@@ -41,8 +41,10 @@
         while ($comment = $comments->fetch()) {
             if(isset($commentId) && $comment['id'] == $commentId) {
         ?>
-            <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
-            <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+            <form action="?updateComment&id=<?= $comment['id'] ?>" method="post">
+                <p><input type="text" id="author" name="author" value="<?= htmlspecialchars($comment['author']) ?>" /> le <?= $comment['comment_date_fr'] ?></p>
+                <p><textarea id="comment" name="comment"><?= nl2br(htmlspecialchars($comment['comment'])) ?></textarea></p>
+            </form>
         <?php
             } else {
         ?>
