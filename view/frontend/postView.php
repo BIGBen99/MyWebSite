@@ -7,7 +7,7 @@
         <h2><?= htmlspecialchars($post['title']) ?> le <time><?= $post['creation_date'] ?></time></h2>
         <p><?= nl2br(htmlspecialchars($post['content'])) ?></p>
     </div>
-
+    <hr />
     <h2>Commentaires</h2>
 
     <form action="?action=addComment&id=<?= $post['id'] ?>" method="post">
