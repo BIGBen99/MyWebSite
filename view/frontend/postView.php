@@ -26,22 +26,22 @@
 
 <?php
     foreach ($comments as $comment):
-            if(isset($commentId) && $comment['id'] == $commentId) {
-        ?>
-            <form action="?action=updateComment&postId=<?= $post['id'] ?>&commentId=<?= $comment['id'] ?>" method="post">
-                <p><input type="text" id="author" name="author" value="<?= htmlspecialchars($comment['author']) ?>" /> le <?= $comment['comment_date'] ?></p>
-                <p><textarea id="comment" name="comment"><?= nl2br(htmlspecialchars($comment['comment'])) ?></textarea></p>
-                <input type="submit" />
-            </form>
-        <?php
-            } else {
-        ?>
-            <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date'] ?> (<a href="?action=modifyComment&postId=<?= $post['id'] ?>&commentId=<?= $comment['id'] ?>">modifier</a>)</p>
-            <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
-        <?php
-            }
-        endforeach;
-        ?>
+        if(isset($commentId) && $comment['id'] == $commentId) {
+?>
+    <form action="?action=updateComment&postId=<?= $post['id'] ?>&commentId=<?= $comment['id'] ?>" method="post">
+        <p><input type="text" id="author" name="author" value="<?= htmlspecialchars($comment['author']) ?>" /> le <?= $comment['comment_date'] ?></p>
+        <p><textarea id="comment" name="comment"><?= nl2br(htmlspecialchars($comment['comment'])) ?></textarea></p>
+        <input type="submit" />
+    </form>
+<?php
+        } else {
+?>
+    <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date'] ?> (<a href="?action=modifyComment&postId=<?= $post['id'] ?>&commentId=<?= $comment['id'] ?>">modifier</a>)</p>
+    <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+<?php
+        }
+    endforeach;
+?>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>
