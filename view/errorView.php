@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="utf-8" />
+        <link href="public/css/style.css" rel="stylesheet" /> 
         <title>Error</title>
-        <link href="style.css" rel="stylesheet" /> 
     </head>
         
     <body>
