@@ -8,8 +8,9 @@
     </header>
     <div id="contenu">
     <?php
-while ($data = $posts->fetch())
-{
+//while ($data = $posts->fetch())
+foreach ($posts as $data):
+//{
 ?>
     <article class="news">
         <header>
@@ -25,7 +26,8 @@ while ($data = $posts->fetch())
         </p>
     </article>
 <?php
-}
+//}
+endforeach;
 $posts->closeCursor();
 ?>
     
