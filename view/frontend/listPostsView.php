@@ -1,30 +1,39 @@
 <?php $title = 'Mon blog'; ?>
 
 <?php ob_start(); ?>
-<h1>Mon super blog !</h1>
-<p>Derniers billets du blog :</p>
-
-
-<?php
+<div id="global">
+    <header>
+        <a href="/"><h1 id="titreBlog">Mon super blog !</h1></a>
+        <p>Je vous souhaite la bienvenue sur ce modeste blog.</p>
+    </header>
+    <div id="contenu">
+    <?php
 while ($data = $posts->fetch())
 {
 ?>
-    <div class="news">
-        <h3>
+    <article class="news">
+        <header>
+        <h1>
             <?= htmlspecialchars($data['title']) ?>
-            <em>le <?= $data['creation_date_fr'] ?></em>
-        </h3>
-        
+            <time>le <?= $data['creation_date_fr'] ?></time>
+        </h1>
+        </header>
         <p>
             <?= nl2br(htmlspecialchars($data['content'])) ?>
             <br />
             <em><a href="?action=post&id=<?= $data['id'] ?>">Commentaires</a></em>
         </p>
-    </div>
+    </article>
 <?php
 }
 $posts->closeCursor();
 ?>
+    
+    </div> <!-- #contenu -->
+    <footer id="piedBlog">
+        Blog réalisé avec PHP, HTML5 et CSS.
+    </footer>
+</div> <!-- #global -->
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>
