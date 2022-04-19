@@ -7,7 +7,7 @@ function listPosts() {
     $postManager = new \BIGBen\MyWebSite\Model\PostManager();
     $posts = $postManager->getPosts();
 
-    require('view/frontend/listPostsView.php');
+    require('view/listPostsView.php');
 }
 
 function post($postId) {
@@ -17,7 +17,7 @@ function post($postId) {
     $post = $postManager->getPost($postId);
     $comments = $commentManager->getComments($postId);
 
-    require('view/frontend/postView.php');
+    require('view/postView.php');
 }
 
 function addComment($postId, $author, $comment) {
@@ -39,7 +39,7 @@ function modifyComment($postId, $commentId) {
     $post = $postManager->getPost($postId);
     $comments = $commentManager->getComments($postId);
 
-    require('view/frontend/postView.php');
+    require('view/postView.php');
 }
 
 function updateComment($postId, $commentId, $author, $comment) {

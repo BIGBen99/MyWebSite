@@ -15,11 +15,7 @@ foreach ($posts as $post):
         </p>
     </article>
     <hr />
-<?php
-endforeach;
-$posts->closeCursor();
-?>
-    
+<?php endforeach; ?>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>
