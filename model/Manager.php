@@ -1,7 +1,7 @@
 <?php
 namespace BIGBen\MyWebSite\Model;
 
-class abstract Manager {
+abstract class Manager {
 private $dbLink;
 
 protected function executeQuery($sql, $params = null) {
