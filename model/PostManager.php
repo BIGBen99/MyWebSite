@@ -5,17 +5,14 @@ require_once('model/Manager.php');
 
 class PostManager extends \BIGBen\MyWebSite\Model\Manager {
     public function getPosts() {
-        $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, creation_date FROM posts ORDER BY creation_date DESC LIMIT 0, 5');
+        $queryResult = $this->executeQuery('SELECT id, title, content, creation_date FROM posts ORDER BY creation_date DESC LIMIT 0, 5');
 
-        return $req;
+        return $queryResult;
     }
 
     public function getPost($postId) {
-        $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, title, content, creation_date FROM posts WHERE id = ?');
-        $req->execute(array($postId));
-        $post = $req->fetch();
+        $queryResult = $this->executeQuery('SELECT id, title, content, creation_date FROM posts WHERE id = ?', array($postId));
+        $post = $queryResult->fetch();
 
         return $post;
     }
