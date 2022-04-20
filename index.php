@@ -1,15 +1,14 @@
 <?php
-echo 'TEST';
-//require('../mywebsite.php');
+require('../mywebsite.php');
 
-//$_SESSION['dsn'] = $dsn;
-//$_SESSION['username'] = $username;
-//$_SESSION['password'] = $password;
+$_SESSION['dsn'] = $dsn;
+$_SESSION['username'] = $username;
+$_SESSION['password'] = $password;
 
-//require('controller/Router.php');
+require('controller/Router.php');
 
-//$router = new \BIGBen\MyWebSite\Controller\Router();
-//$router->routeRequest();
+$router = new \BIGBen\MyWebSite\Controller\Router();
+$router->routeRequest();
 
 /* require('controller/frontend.php');
 
