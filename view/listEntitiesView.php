@@ -2,7 +2,21 @@
 
 <?php ob_start(); ?>
 <table>
-  <tr><td>ID</td><td>SIREN</td><td>NIC</td><td>SIRET</td><td>Raison sociale</td><td>isRoot</td><td>ID du parent</td><td>Adresse</td><td>PND</td><td>Date de création</td></tr>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>SIREN</th>
+    <th>NIC</th>
+    <th>SIRET</th>
+    <th>Raison sociale</th>
+    <th>isRoot</th>
+    <th>ID du parent</th>
+    <th>Adresse</th>
+    <th>PND</th>
+    <th>Date de création</th>
+  </tr>
+  </thead>
+  <tbody>
 <?php
 foreach ($entities as $entity):
 ?>
@@ -19,6 +33,7 @@ foreach ($entities as $entity):
     <td><?= $entity['creation_date'] ?></td>
   </tr>
 <?php endforeach; ?>
+  </tbody>
 </table>
 <?php $content = ob_get_clean(); ?>
 
