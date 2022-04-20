@@ -13,7 +13,7 @@ class HomeController {
 
     public function home() {
         $posts = $this->postManager->getPosts();
-        $view = new BIGBen\MyWebSite\View\View("listPosts");
+        $view = new \BIGBen\MyWebSite\View\View("listPosts");
         $view->generate(array('posts' => $posts));
     }
 }
