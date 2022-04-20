@@ -1,4 +1,6 @@
 <?php
+namespace BIGBen\MyWebSite\Controller;
+
 require_once('controller/HomeController.php');
 require_once('controller/PostController.php');
 require_once('view/View.php');
@@ -8,8 +10,8 @@ class Router {
     private $postController;
 
     public function __construct() {
-        $this->homeController = new HomeController();
-        $this->postController = new PostController();
+        $this->homeController = new \BIGBen\MyWebSite\Controller\HomeController();
+        $this->postController = new \BIGBen\MyWebSite\Controller\PostController();
     }
 
     public function routeRequest() {
@@ -21,13 +23,13 @@ class Router {
                         if($post_id != 0) {
                             $this->postController->post($post_id);
                         } else {
-                            throw new Exception('Identifiant de billet non valide');
+                            throw new \Exception('Identifiant de billet non valide');
                         }
                     } else {
-                        throw new Exception('Identifiant de billet non défini');
+                        throw new \Exception('Identifiant de billet non défini');
                     }
                 } else {
-                    throw new Exception('Action non valide');
+                    throw new \Exception('Action non valide');
                 }
             } else {
                 $this->homeController->home();
@@ -38,7 +40,7 @@ class Router {
     }
 
     private function error($errorMessage) {
-        $view = new View("error");
+        $view = new \BIGBen\MyWebSite\View\View("error");
         $view->generate(array('errorMessage' => $errorMessage));
     }
 }

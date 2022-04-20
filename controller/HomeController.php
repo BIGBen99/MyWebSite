@@ -1,4 +1,6 @@
 <?php
+namespace BIGBen\MyWebSite\Controller;
+
 require_once('model/PostManager.php');
 require_once('view/View.php');
 
