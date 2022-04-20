@@ -29,7 +29,7 @@ class Router {
                         throw new \Exception('Identifiant de billet non défini');
                     }
                 } else {
-                    throw new \Exception('Action non valide');
+                    throw new \Exception('Action (' . $_GET['action'] . ') non valide');
                 }
             } else {
                 $this->homeController->home();
