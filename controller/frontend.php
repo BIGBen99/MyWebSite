@@ -70,7 +70,6 @@ function addEntity($siren, $numeroInternedeClassement, $name, $parent_id, $addre
     if ($affectedLines === false) {
         throw new Exception('Impossible d\'ajouter l'entité !');
     } else {
-        header('Location: ?action=listEntities);
+        header('Location: ?action=listEntities');
     }
-
 }
