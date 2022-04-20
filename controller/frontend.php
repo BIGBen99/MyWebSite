@@ -61,3 +61,16 @@ function listEntities() {
 
     require('view/listEntitiesView.php');
 }
+
+function addEntity($siren, $numeroInternedeClassement, $name, $parent_id, $address_line1, $address_line2, $address_line3, $address_zipCode, $address_city, $address_city, $address_pliNonDitribuable) {
+    $entityManager = new \BIGBen\MyWebSite\Model\EntityManager();
+    
+    $affectedLines = $entityManager->addEntity($siren, $numeroInternedeClassement, $name, $parent_id, $address_line1, $address_line2, $address_line3, $address_zipCode, $address_city, $address_city, $address_pliNonDitribuable)
+
+    if ($affectedLines === false) {
+        throw new Exception('Impossible d\'ajouter l'entité !');
+    } else {
+        header('Location: ?action=listEntities);
+    }
+
+}
