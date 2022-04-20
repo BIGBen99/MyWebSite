@@ -2,8 +2,8 @@
 namespace BIGBen\MyWebSite\View;
 
 class View {
-    private file;
-    private title;
+    private $file;
+    private $title;
 
     public function __construct($action) {
         $this->file = $action . "View.php";
