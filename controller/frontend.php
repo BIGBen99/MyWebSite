@@ -2,6 +2,7 @@
 // Chargement des classes
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
+require_once('model/EntityManager.php');
 
 function listPosts() {
     $postManager = new \BIGBen\MyWebSite\Model\PostManager();
@@ -52,4 +53,11 @@ function updateComment($postId, $commentId, $author, $comment) {
     } else {
         header('Location: ?action=post&id=' . $postId);
     }
+}
+
+function listEntities() {
+    $entityManager = new \BIGBen\MyWebSite\Model\EntityManager();
+    $entities = $entityManager->getEntities();
+
+    require('view/listEntitiesView.php');
 }
