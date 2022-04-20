@@ -8,6 +8,7 @@ $_SESSION['password'] = $password;
 require('controller/Router.php');
 
 echo 'TEST';
+?>
 //$router = new \BIGBen\MyWebSite\Controller\Router();
 //$router->routeRequest();
 
