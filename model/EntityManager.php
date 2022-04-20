@@ -11,8 +11,8 @@ class EntityManager extends \BIGBen\MyWebSite\Model\Manager {
     }
     
     public function addEntity() {
-        $queryResult = $this->executeQuery();
+        $affectedLines = $this->executeQuery('INSERT INTO bc_entities(siren, numeroInternedeClassement, siret, name, parent_id, address_line1, address_line2, address_line3, address_zipCode, address_city, address_country, address_pliNonDisribuable, creation_date) VALUES (?, ?, ?, NOW())', array($siren, $numeroInternedeClassement, $siren . $numeroInternedeClassement, $parent_id, $address_line1, $address_line2, $address_line3, $address_zipCode, $address_city, $address_country, $address_pliNonDistribuable));
         
-        return $queryResult;
+        return $affectedLines;
     }
 }
