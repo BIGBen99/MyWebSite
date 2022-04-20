@@ -1,28 +1,27 @@
 <?php $title = 'Mon blog - ' . $post['title']; ?>
 
-<?php ob_start(); ?>
-    <p><a href="?action=listPosts">Retour à la liste des billets</a></p>
+<p><a href="?action=listPosts">Retour à la liste des billets</a></p>
 
-    <div class="news">
-        <h2><?= htmlspecialchars($post['title']) ?> le <time><?= $post['creation_date'] ?></time></h2>
-        <p><?= nl2br(htmlspecialchars($post['content'])) ?></p>
+<div class="news">
+    <h2><?= htmlspecialchars($post['title']) ?> le <time><?= $post['creation_date'] ?></time></h2>
+    <p><?= nl2br(htmlspecialchars($post['content'])) ?></p>
+</div>
+<hr />
+<h2>Commentaires</h2>
+
+<form action="?action=addComment&id=<?= $post['id'] ?>" method="post">
+    <div>
+        <label for="author">Auteur</label><br />
+        <input type="text" id="author" name="author" />
     </div>
-    <hr />
-    <h2>Commentaires</h2>
-
-    <form action="?action=addComment&id=<?= $post['id'] ?>" method="post">
-        <div>
-            <label for="author">Auteur</label><br />
-            <input type="text" id="author" name="author" />
-        </div>
-        <div>
-            <label for="comment">Commentaire</label><br />
-            <textarea id="comment" name="comment"></textarea>
-        </div>
-        <div>
-            <input type="submit" />
-        </div>
-    </form>
+    <div>
+        <label for="comment">Commentaire</label><br />
+        <textarea id="comment" name="comment"></textarea>
+    </div>
+    <div>
+        <input type="submit" />
+    </div>
+</form>
 
 <?php
     foreach ($comments as $comment):
@@ -42,6 +41,3 @@
         }
     endforeach;
 ?>
-<?php $content = ob_get_clean(); ?>
-
-<?php require('template.php'); ?>
