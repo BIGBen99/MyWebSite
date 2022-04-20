@@ -47,7 +47,7 @@ class Router {
                     }
                 } elseif($_GET['action'] == 'modifyComment') {
                     if(isset($_GET['postId'])) {
-                        $post_id = intval($_GET['postId'])
+                        $post_id = intval($_GET['postId']);
                         if($post_id != 0) {
                             if(isset($_GET['commentId'])) {
                                 $comment_id = intval($_GET['commentId']);
