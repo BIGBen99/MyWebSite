@@ -6,11 +6,6 @@ require_once('controller/PostController.php');
 require_once('view/View.php');
 
 class Router {
-    public function routeRequest() {
-    }
-}
-
-/*class Router {
     private $homeController;
     private $postController;
 
