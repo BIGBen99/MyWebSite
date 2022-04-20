@@ -44,7 +44,7 @@ class PostController {
         if ($affectedLines === false) {
             throw new Exception('Impossible de mettre à jour le commentaire !');
         } else {
-            header('Location: ?action=post&id=' . $postId);
+            header('Location: ?action=post&id=' . $post_id);
         }
     }
 }
