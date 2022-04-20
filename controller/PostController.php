@@ -37,4 +37,14 @@ class PostController {
         $view = new \BIGBen\MyWebSite\View\View("post");
         $view->generate(array('post' => $post, 'comments' => $comments, 'comment_id' => $comment_id));
     }
+
+    public function updateComment($post_id, $comment_id, $author, $comment) {
+        $affectedLines = $this->commentManager->updateComment($comment_id, $author, $comment);
+
+        if ($affectedLines === false) {
+            throw new Exception('Impossible de mettre à jour le commentaire !');
+        } else {
+            header('Location: ?action=post&id=' . $postId);
+        }
+    }
 }
