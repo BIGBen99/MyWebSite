@@ -41,6 +41,8 @@ try {
                     throw new Exception('Tous les champs ne sont pas remplis !');
                 }
             }
+        } elseif ($_GET['action'] == 'listEntities') {
+            listEntities();
         } else {
             throw new Exception('Action inconnue');
         }
