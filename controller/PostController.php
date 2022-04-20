@@ -30,4 +30,7 @@ class PostController {
             header('Location: ?action=post&id=' . $post_id);
         }
     }
+
+    public function modifyComment($post_id, $comment_id) {
+    }
 }
