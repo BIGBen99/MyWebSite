@@ -68,7 +68,7 @@ function addEntity($siren, $numeroInternedeClassement, $name, $parent_id, $addre
     $affectedLines = $entityManager->addEntity($siren, $numeroInternedeClassement, $name, $parent_id, $address_line1, $address_line2, $address_line3, $address_zipCode, $address_city, $address_city, $address_pliNonDitribuable);
 
     if ($affectedLines === false) {
-        throw new Exception('Impossible d\'ajouter l'entité !');
+        throw new Exception('Impossible d\'ajouter l\'entité !');
     } else {
         header('Location: ?action=listEntities');
     }
