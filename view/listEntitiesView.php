@@ -15,6 +15,19 @@
     <th>PND</th>
     <th>Date de création</th>
   </tr>
+  <form method="post" action="?action=addEntity">
+  <tr>
+    <td></td>
+    <td><input name="siren" type="text" placeholder="SIREN"></td>
+    <td><input name="numeroInternedeClassement" type="text" placeholder="NIC"></td>
+    <td></td>
+    <td><input name="name" type="text" placeholder="Raison sociale"></td>
+    <td></td>
+    <td><input name="parent_id" type="text" placeholder="ID parent"></td> <!-- à remplacer par un select -->
+    <td><input name="address_line1" type="text" placeholder="ligne 1"></td>
+    <td><input type="submit"></td>
+  </tr>
+  </form>
   </thead>
   <tbody>
 <?php
