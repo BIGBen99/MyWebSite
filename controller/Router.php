@@ -30,6 +30,21 @@ class Router {
                     }
                 } elseif($_GET['action'] == 'listPosts') {
                     $this->homeController->home();
+                } elseif($_GET['action'] == 'addComment') {
+                    if(isset($_GET['id'])) {
+                        $post_id = intval($_GET['id']);
+                        if($post_id != 0) {
+                            if(!empty($_POST['author']) && !empty($_POST['comment'])) {
+                                $this->postController->addComment($post_id, $_POST['author'], $_POST['comment']);
+                            } else {
+                                throw new \Exception('Tous les champs (auteur, commentaire) ne sont pas remplis !');
+                            }
+                        } else {
+                            throw new \Exception('Identifiant de billet non valide');
+                        }
+                    } else {
+                        throw new \Exception('Identifiant de billet non défini');
+                    }
                 } else {
                     throw new \Exception('Action (' . $_GET['action'] . ') non valide');
                 }

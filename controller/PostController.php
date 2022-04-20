@@ -20,4 +20,14 @@ class PostController {
         $view = new \BIGBen\MyWebSite\View\View("post");
         $view->generate(array('post' => $post, 'comments' => $comments));
     }
+
+    public function addComment($post_id, $author, $comment) {
+        $affectedLines = $this->commentManager->postComment($post_id, $author, $comment);
+
+        if ($affectedLines === false) {
+            throw new \Exception('Impossible d\'ajouter le commentaire !');
+        } else {
+            header('Location: ?action=post&id=' . $postId);
+        }
+    }
 }
