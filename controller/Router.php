@@ -28,6 +28,8 @@ class Router {
                     } else {
                         throw new \Exception('Identifiant de billet non défini');
                     }
+                } elseif($_GET['action'] == 'listPosts') {
+                    $this->homeController->home();
                 } else {
                     throw new \Exception('Action (' . $_GET['action'] . ') non valide');
                 }
