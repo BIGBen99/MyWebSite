@@ -6,12 +6,12 @@ class HomeController {
     private $postManager;
 
     public function __construct() {
-        $this->postManager = new PostManager();
+        $this->postManager = new \BIGBen\MyWebSite\Model\PostManager();
     }
 
     public function home() {
         $posts = $this->postManager->getPosts();
-        $view = new View("listPosts");
+        $view = new BIGBen\MyWebSite\View\View("listPosts");
         $view->generate(array('posts' => $posts));
     }
 }
