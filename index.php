@@ -1,9 +1,10 @@
 <?php
-require('../mywebsite.php');
+echo 'TEST';
+//require('../mywebsite.php');
 
-$_SESSION['dsn'] = $dsn;
-$_SESSION['username'] = $username;
-$_SESSION['password'] = $password;
+//$_SESSION['dsn'] = $dsn;
+//$_SESSION['username'] = $username;
+//$_SESSION['password'] = $password;
 
 //require('controller/Router.php');
 
