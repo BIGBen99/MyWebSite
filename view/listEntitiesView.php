@@ -10,7 +10,7 @@ foreach ($entities as $entity):
     <td><?= $entity['id'] ?></td>
     <td><?= $entity['siren'] ?></td>
     <td><?= $entity['numeroInternedeClassement'] ?></td>
-    <td><?= !is_null($entity['numeroInternedeClassement'])?$entity['siren'] ?><?= $entity['numeroInternedeClassement']:"" ?></td>
+    <td><?= !is_null($entity['numeroInternedeClassement'])?$entity['siren'] . $entity['numeroInternedeClassement']:"" ?></td>
     <td><?= $entity['name'] ?></td>
     <td></td>
     <td><?= $entity['address_pliNonDistribuable'] ?></td>
