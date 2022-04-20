@@ -1,21 +1,15 @@
-<?php $title = 'Mon blog'; ?>
+<?php $this->title = 'Mon blog'; ?>
 
-<?php ob_start(); ?>
-<?php
-foreach ($posts as $post):
-?>
+<?php foreach ($posts as $post): ?>
     <article class="news">
         <header>
-            <h2><?= htmlspecialchars($post['title']) ?> le <time><?= $post['creation_date'] ?></time></h2>
+            <a href="?action=post&id=<?= $post['id'] ?>"><h2><?= htmlspecialchars($post['title']) ?> le <time><?= $post['creation_date'] ?></time></h2></a>
         </header>
         <p>
             <?= nl2br(htmlspecialchars($post['content'])) ?>
             <br />
-            <em><a href="?action=post&id=<?= $post['id'] ?>">Commentaires</a></em>
+            <em>Commentaires</em>
         </p>
     </article>
     <hr />
 <?php endforeach; ?>
-<?php $content = ob_get_clean(); ?>
-
-<?php require('template.php'); ?>

@@ -5,7 +5,12 @@ $_SESSION['dsn'] = $dsn;
 $_SESSION['username'] = $username;
 $_SESSION['password'] = $password;
 
-require('controller/frontend.php');
+require('controller/Router.php');
+
+$router = new Router();
+$router->routeRequest();
+
+/* require('controller/frontend.php');
 
 try {
     if (isset($_GET['action'])) {
@@ -50,4 +55,4 @@ try {
 } catch(Exception $e) {
     $errorMessage = $e->getMessage();
     require('view/errorView.php');
-}
+}*/
