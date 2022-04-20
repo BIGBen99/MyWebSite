@@ -32,9 +32,9 @@ class PostController {
     }
 
     public function modifyComment($post_id, $comment_id) {
-        $post = $this->postManager->getPost($post_id);
-        $comments = $this->commentManager->getComments($post_id);
-        $view = new \BIGBen\MyWebSite\View\View("post");
-        $view->generate(array('post' => $post, 'comments' => $comments, 'comment_id' => $comment_id));
+//        $post = $this->postManager->getPost($post_id);
+//        $comments = $this->commentManager->getComments($post_id);
+//        $view = new \BIGBen\MyWebSite\View\View("post");
+//        $view->generate(array('post' => $post, 'comments' => $comments, 'comment_id' => $comment_id));
     }
 }

@@ -45,6 +45,26 @@ class Router {
                     } else {
                         throw new \Exception('Identifiant de billet non défini');
                     }
+                } elseif($_GET['action'] == 'modifyComment') {
+                    if(isset($_GET['postId'])) {
+                        $post_id = intval($_GET['postId'])
+                        if($post_id != 0) {
+                            if(isset($_GET['commentId'])) {
+                                $comment_id = intval($_GET['commentId']);
+                                if($comment_id != 0) {
+                                    $this->postController->modifyComment($post_id, $comment_id);
+                                } else {
+                                    throw new \Exception('Identifiant de commentaire non valide');
+                                }
+                            } else {
+                                throw new \Exception('Identifiant de commentaire non défini');
+                            }
+                        } else {
+                            throw new \Exception('Identifiant de billet non valide');
+                        }
+                    } else {
+                        throw new \Exception('Identifiant de billet non défini');
+                    }
                 } else {
                     throw new \Exception('Action (' . $_GET['action'] . ') non valide');
                 }
