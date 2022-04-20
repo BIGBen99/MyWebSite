@@ -2,7 +2,7 @@
 
 <?php ob_start(); ?>
 <table>
-  <tr><td>ID</td><td>SIREN</td><td>NIC</td><td>SIRET</td><td>Raison sociale</td><td>Adresse</td><td>PND</td><td>Date de création</td></tr>
+  <tr><td>ID</td><td>SIREN</td><td>NIC</td><td>SIRET</td><td>Raison sociale</td><td>isRoot</td><td>ID du parent</td><td>Adresse</td><td>PND</td><td>Date de création</td></tr>
 <?php
 foreach ($entities as $entity):
 ?>
@@ -10,10 +10,12 @@ foreach ($entities as $entity):
     <td><?= $entity['id'] ?></td>
     <td><?= $entity['siren'] ?></td>
     <td><?= $entity['numeroInternedeClassement'] ?></td>
-    <td><?= !is_null($entity['numeroInternedeClassement'])?$entity['siren'] . $entity['numeroInternedeClassement']:"" ?></td>
+    <td><?= !is_null($entity['numeroInternedeClassement'])?$entity['siren'] . $entity['numeroInternedeClassement']:'' ?></td>
     <td><?= $entity['name'] ?></td>
+    <td><?= is_null($entity['parent_id'])?'X':'' ?></td>
+    <td><?= !is_null($entity['parent_id'])?$entity['parent_id']:'' ?></td>
     <td><?= $entity['address_line1'] ?>, <?= $entity['address_line2'] ?>, <?= $entity['address_line3'] ?>, <?= $entity['address_zipCode'] ?> <?= $entity['address_city'] ?>, <?= $entity['address_country'] ?></td>
-    <td><?= $entity['address_pliNonDistribuable'] > 0?"X":"" ?></td>
+    <td><?= $entity['address_pliNonDistribuable'] > 0?'X':'' ?></td>
     <td><?= $entity['creation_date'] ?></td>
   </tr>
 <?php endforeach; ?>
