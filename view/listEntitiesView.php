@@ -18,13 +18,13 @@
   <form method="post" action="?action=addEntity">
   <tr>
     <td></td>
-    <td><input name="siren" type="text" placeholder="SIREN"></td>
-    <td><input name="numeroInternedeClassement" type="text" placeholder="NIC"></td>
+    <td><input name="siren" type="text" placeholder="SIREN" size="9"></td>
+    <td><input name="numeroInternedeClassement" type="text" placeholder="NIC" size="5"></td>
     <td></td>
     <td><input name="name" type="text" placeholder="Raison sociale"></td>
     <td></td>
-    <td><input name="parent_id" type="text" placeholder="ID parent"></td> <!-- à remplacer par un select -->
-    <td><input name="address_line1" type="text" placeholder="ligne 1"><br><input name="address_line2" type="text" placeholder="ligne 2"><br><input name="address_line3" type="text" placeholder="ligne 3"><br><input name="address_zipCode" type="text" placeholder="Code postal"><input name="address_city" type="text" placeholder="Ville"><br><input name="address_country" type="text" placeholder="Pays"><br></td>
+    <td><input name="parent_id" type="text" placeholder="ID parent" size="3"></td> <!-- à remplacer par un select -->
+    <td><input name="address_line1" type="text" placeholder="ligne 1"><br><input name="address_line2" type="text" placeholder="ligne 2"><br><input name="address_line3" type="text" placeholder="ligne 3"><br><input name="address_zipCode" type="text" placeholder="Code postal" size="5"><input name="address_city" type="text" placeholder="Ville"><br><input name="address_country" type="text" placeholder="Pays"><br></td>
     <td><input name="address_pliNonDistribuable" type="checkbox"></td>
     <td><input type="submit"></td>
   </tr>
