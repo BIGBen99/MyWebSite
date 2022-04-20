@@ -9,4 +9,10 @@ class EntityManager extends \BIGBen\MyWebSite\Model\Manager {
 
         return $queryResult;
     }
+    
+    public function addEntity() {
+        $queryResult = $this->executeQuery();
+        
+        return $queryResult;
+    }
 }
