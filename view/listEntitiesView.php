@@ -13,7 +13,7 @@ foreach ($entities as $entity):
     <td><?= !is_null($entity['numeroInternedeClassement'])?$entity['siren'] . $entity['numeroInternedeClassement']:"" ?></td>
     <td><?= $entity['name'] ?></td>
     <td></td>
-    <td><?= $entity['address_pliNonDistribuable'] ?></td>
+    <td><?= $entity['address_pliNonDistribuable']?"X":"" ?></td>
     <td><?= $entity['creation_date'] ?></td>
   </tr>
 <?php endforeach; ?>
