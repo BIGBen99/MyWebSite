@@ -34,4 +34,8 @@ class View {
             throw new \Exception('Fichier ' . $file . ' introuvable');
         }
     }
+    
+    private function clean($value) {
+        return htmlspecialchars($value, ENT_QUOTES, 'UTF-8', false);
+    }
 }
