@@ -16,4 +16,14 @@ class EntityController {
         $view = new \BIGBen\MyWebSite\View\View("listEntities");
         $view->generate(array('entities' => $entities));
     }
+    
+    public function addEntity($siren, $numeroInternedeClassement, $name, $parent_id, $address_line1, $address_line2, $address_line3, $address_zipCode, $address_city, $address_country, $address_pliNonDistribuable) {
+        $affectedLines = $this->entityManager->addEntity($siren, $numeroInternedeClassement, $name, $parent_id, $address_line1, $address_line2, $address_line3, $address_zipCode, $address_city, $address_country, $address_pliNonDistribuable);
+
+        if ($affectedLines === false) {
+            throw new \Exception('Impossible d\'ajouter l\'entité !');
+        } else {
+            header('Location: ?action=listEntities');
+        }
+    }
 }
