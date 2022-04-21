@@ -48,9 +48,9 @@ class Router {
                     }
                 } elseif($_GET['action'] == 'updateComment') {
                     $post_id = $this->getParameter($_POST, 'post_id');
-                    $comment_id = $this->getParameter($_POST, '$comment_id');
-                    $author = $this->getParameter($_POST, '$author');
-                    $comment = $this->getParameter($_POST, '$comment');
+                    $comment_id = $this->getParameter($_POST, 'comment_id');
+                    $author = $this->getParameter($_POST, 'author');
+                    $comment = $this->getParameter($_POST, 'comment');
                     $this->postController->updateComment($post_id, $comment_id, $author, $comment);
                 } elseif($_GET['action'] == 'listEntities') {
                     $this->entityController->listEntities();
