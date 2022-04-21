@@ -10,8 +10,10 @@ class View {
         if($controller != '') {
             $file = $file . $controller . '/';
         }
+        echo $this->file . '<br>';
+        echo $file . '<br>';
+        echo $action . '<br>';
         $this->file = $file . $action . ".php";
-        echo $this->file;
     }
 
     public function generate($data) {
