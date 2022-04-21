@@ -4,7 +4,7 @@ namespace BIGBen\MyWebSite\Controller;
 require_once('framework/Controller.php');
 require_once('model/EntityManager.php');
 
-class EntityController extends Controller {
+class EntityController extends \BIGBen\MyWebSite\Framework\Controller {
     private $entityManager;
 
     public function __construct() {

@@ -5,7 +5,7 @@ require_once('framework/Controller.php');
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 
-class PostController extends Controller {
+class PostController extends \BIGBen\MyWebSite\Framework\Controller {
     private $postManager;
     private $commentManager;
 

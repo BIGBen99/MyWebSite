@@ -4,7 +4,7 @@ namespace BIGBen\MyWebSite\Controller;
 require_once('framework/Controller.php');
 require_once('model/PostManager.php');
 
-class HomeController extends Controller {
+class HomeController extends \BIGBen\MyWebSite\Framework\Controller {
     private $postManager;
 
     public function __construct() {
