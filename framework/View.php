@@ -1,5 +1,5 @@
 <?php
-namespace BIGBen\MyWebSite\View;
+namespace BIGBen\MyWebSite\Framework;
 
 class View {
     private $file;
