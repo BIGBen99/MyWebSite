@@ -15,12 +15,12 @@ class Configuration {
 
     private static function getParameters() {
         if (self::$parameters == null) {
-            $filePath = "../prod.ini";
+            $filePath = '../prod.ini';
             if (!file_exists($filePath)) {
-                $filePath = "../dev.ini";
+                $filePath = '../dev.ini';
             }
             if (!file_exists($filePath)) {
-                throw new \Exception("Aucun fichier de configuration trouvé");
+                throw new \Exception('Aucun fichier de configuration trouvé');
             } else {
                 self::$parameters = parse_ini_file($filePath);
             }
