@@ -25,7 +25,7 @@ class Router {
             $controller = ucfirst(strtolower($controller));
         }
         
-        $controllerClass = '\BIGBen\MyWebSite\Controller\' . $controller . 'Controller';
+        $controllerClass = '\BIGBen\MyWebSite\Controller\\' . $controller . 'Controller';
         $controllerFile = 'controller/' . $controllerClass . '.php';
         if(file_exists($controllerFile)) {
             require($controllerFile);
