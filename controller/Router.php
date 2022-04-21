@@ -55,11 +55,8 @@ class Router {
                 } elseif($_GET['action'] == 'listEntities') {
                     $this->entityController->listEntities();
                 } elseif($_GET['action'] == 'addEntity') {
-                    if (!empty($_POST['name'])) {
-                        $this->entityController->addEntity($_POST['siren'], $_POST['numeroInternedeClassement'], $_POST['name'], $_POST['parent_id'], $_POST['address_line1'], $_POST['address_line2'], $_POST['address_line3'], $_POST['address_zipCode'], $_POST['address_city'], $_POST['address_country'], isset($_POST['address_pliNonDistribuable'])?true:false);
-                    } else {
-                        throw new \Exception('Tous les champs ne sont pas remplis !');
-                    }                    
+                    $name = $this->getParameter($_POST, 'name');
+                    $this->entityController->addEntity($_POST['siren'], $_POST['numeroInternedeClassement'], $name, $_POST['parent_id'], $_POST['address_line1'], $_POST['address_line2'], $_POST['address_line3'], $_POST['address_zipCode'], $_POST['address_city'], $_POST['address_country'], isset($_POST['address_pliNonDistribuable'])?true:false);
                 } else {
                     throw new \Exception('Action (' . $_GET['action'] . ') non valide');
                 }
