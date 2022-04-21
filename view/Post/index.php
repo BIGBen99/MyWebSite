@@ -1,10 +1,10 @@
-<?php $title = 'Mon blog - ' . $post['title']; ?>
+<?php $title = 'Mon blog - ' . $this->clean($post['title']); ?>
 
 <p><a href="?action=listPosts">Retour à la liste des billets</a></p>
 
 <div class="news">
-    <h2><?= htmlspecialchars($post['title']) ?> le <time><?= $post['creation_date'] ?></time></h2>
-    <p><?= nl2br(htmlspecialchars($post['content'])) ?></p>
+    <h2><?= $this->clean($post['title']) ?> le <time><?= $this->clean($post['creation_date']) ?></time></h2>
+    <p><?= $this->clean($post['content']) ?></p>
 </div>
 <hr />
 <h2>Commentaires</h2>
@@ -38,8 +38,8 @@
 <?php
         } else {
 ?>
-    <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date'] ?> (<a href="?action=modifyComment&postId=<?= $post['id'] ?>&commentId=<?= $comment['id'] ?>">modifier</a>)</p>
-    <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+    <p><strong><?= $this->clean($comment['author']) ?></strong> le <?= $this->clean($comment['comment_date']) ?> (<a href="?action=modifyComment&postId=<?= $post['id'] ?>&commentId=<?= $comment['id'] ?>">modifier</a>)</p>
+    <p><?= $this->clean($comment['comment']) ?></p>
 <?php
         }
     endforeach;
