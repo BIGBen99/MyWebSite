@@ -1,11 +1,5 @@
 <?php
-require('../mywebsite.php');
+require('framework/Router.php');
 
-$_SESSION['dsn'] = $dsn;
-$_SESSION['username'] = $username;
-$_SESSION['password'] = $password;
-
-require('controller/Router.php');
-
-$router = new \BIGBen\MyWebSite\Controller\Router();
+$router = new \BIGBen\MyWebSite\Framework\Router();
 $router->routeRequest();
