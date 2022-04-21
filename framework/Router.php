@@ -7,7 +7,7 @@ require_once('View.php');
 class Router {
     public function routeRequest() {
         try {
-            $request = new Request(array_merge($_GET, $_POST));
+            $request = new \BIGBen\MyWebSite\Framework\Request(array_merge($_GET, $_POST));
             
             $controller = $this->createController($request);
             $action = $this->createAction($request);
@@ -29,7 +29,7 @@ class Router {
         $controllerFile = 'controller/' . $controllerClass . '.php';
         if(file_exists($controllerFile)) {
             require($controllerFile);
-            $controller = new $controllerClass();
+            $controller = new \BIGBen\MyWebSite\Controller\$controllerClass();
             $controller->setRequest($request);
             return $controller
         } else {
@@ -46,7 +46,7 @@ class Router {
     }
     
     private function manageError(Exception $exception) {
-        $view = new View('error');
+        $view = new \BIGBen\MyWebSite\Framework\View('error');
         $view->generate(array('errorMessage' => $exception->getMessage()));
     }
 }
