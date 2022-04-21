@@ -25,11 +25,11 @@ class Router {
             $controller = ucfirst(strtolower($controller));
         }
         
-        $controllerClass = $controller . 'Controller';
+        $controllerClass = '\BIGBen\MyWebSite\Controller\' . $controller . 'Controller';
         $controllerFile = 'controller/' . $controllerClass . '.php';
         if(file_exists($controllerFile)) {
             require($controllerFile);
-            $controller = new \BIGBen\MyWebSite\Controller\$controllerClass();
+            $controller = new $controllerClass();
             $controller->setRequest($request);
             return $controller
         } else {
