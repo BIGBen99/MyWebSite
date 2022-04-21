@@ -34,16 +34,16 @@
 foreach ($entities as $entity):
 ?>
   <tr>
-    <td><?= $entity['id'] ?></td>
-    <td><?= $entity['siren'] ?></td>
-    <td><?= $entity['numeroInternedeClassement'] ?></td>
-    <td><?= !is_null($entity['numeroInternedeClassement'])?$entity['siren'] . $entity['numeroInternedeClassement']:'' ?></td>
-    <td><?= $entity['name'] ?></td>
+    <td><?= $this->clean($entity['id']) ?></td>
+    <td><?= $this->clean($entity['siren']) ?></td>
+    <td><?= $this->clean($entity['numeroInternedeClassement']) ?></td>
+    <td><?= !is_null($entity['numeroInternedeClassement'])?$this->clean($entity['siren'] . $entity['numeroInternedeClassement']):'' ?></td>
+    <td><?= $this->clean($entity['name']) ?></td>
     <td><?= is_null($entity['parent_id'])?'X':'' ?></td>
-    <td><?= !is_null($entity['parent_id'])?$entity['parent_id']:'' ?></td>
-    <td><?= $entity['address_line1'] ?>, <?= $entity['address_line2'] ?>, <?= $entity['address_line3'] ?>, <?= $entity['address_zipCode'] ?> <?= $entity['address_city'] ?>, <?= $entity['address_country'] ?></td>
+    <td><?= !is_null($entity['parent_id'])?$this->clean($entity['parent_id']):'' ?></td>
+    <td><?= $this->clean($entity['address_line1']) ?>, <?= $this->clean($entity['address_line2']) ?>, <?= $this->clean($entity['address_line3']) ?>, <?= $this->clean($entity['address_zipCode']) ?> <?= $this->clean($entity['address_city']) ?>, <?= $this->clean($entity['address_country']) ?></td>
     <td><?= $entity['address_pliNonDistribuable'] > 0?'X':'' ?></td>
-    <td><?= $entity['creation_date'] ?></td>
+    <td><?= $this->clean($entity['creation_date']) ?></td>
   </tr>
 <?php endforeach; ?>
   </tbody>
