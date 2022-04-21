@@ -97,7 +97,7 @@ class Router {
                 } elseif($_GET['action'] == 'addEntity') {
                     if (!empty($_POST['name'])) {
                         echo '$siren=[' . $_POST['siren'] . ']<br>';
-                        $this->entityController->addEntity($_POST['siren'], $_POST['numeroInternedeClassement'], $_POST['name'], $_POST['parent_id'], $_POST['address_line1'], $_POST['address_line2'], $_POST['address_line3'], $_POST['address_zipCode'], $_POST['address_city'], $_POST['address_country'], $_POST['address_pliNonDistribuable']);
+                        //$this->entityController->addEntity($_POST['siren'], $_POST['numeroInternedeClassement'], $_POST['name'], $_POST['parent_id'], $_POST['address_line1'], $_POST['address_line2'], $_POST['address_line3'], $_POST['address_zipCode'], $_POST['address_city'], $_POST['address_country'], $_POST['address_pliNonDistribuable']);
                     } else {
                         throw new Exception('Tous les champs ne sont pas remplis !');
                     }                    
