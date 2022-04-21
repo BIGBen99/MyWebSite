@@ -31,7 +31,7 @@ class Router {
             require($controllerFile);
             $controller = new $controllerClass();
             $controller->setRequest($request);
-            return $controller
+            return $controller;
         } else {
             throw new \Exception('Fichier ' . $controllerFile . ' introuvable');
         }
