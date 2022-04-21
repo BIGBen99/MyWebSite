@@ -2,6 +2,7 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8" />
+        <base href="<?= $webRoot ?>">
         <link href="public/css/style.css" rel="stylesheet" /> 
         <title><?= $title ?></title>
     </head>
