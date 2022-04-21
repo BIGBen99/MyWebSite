@@ -89,12 +89,12 @@ class Router {
                         } else {
                             throw new \Exception('Identifiant de billet non valide');
                         }
-                    } elseif($_GET['action'] == 'listEntities') {
-                        $this->entityController->listEntities();
-                    }else {
+                    } else {
                         throw new \Exception('Identifiant de billet non défini');
                     }
-                }else {
+                } elseif($_GET['action'] == 'listEntities') {
+                        $this->entityController->listEntities();
+                } else {
                     throw new \Exception('Action (' . $_GET['action'] . ') non valide');
                 }
             } else {
