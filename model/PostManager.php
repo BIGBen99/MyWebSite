@@ -1,7 +1,7 @@
 <?php
 namespace BIGBen\MyWebSite\Model;
 
-require_once('model/Manager.php');
+require_once('framework/Manager.php');
 
 class PostManager extends \BIGBen\MyWebSite\Model\Manager {
     public function getPosts() {
