@@ -12,7 +12,6 @@ class Router {
             $controller = $this->createController($request);
             $action = $this->createAction($request);
             
-            echo 'Router.routeRequest:' . $action . '<br>';
             $controller->executeAction($action);
         } catch(Exception $e) {
             $this->manageError($e);
