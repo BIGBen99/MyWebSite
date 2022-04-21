@@ -47,21 +47,11 @@ class Router {
                         throw new \Exception('Identifiant de billet non valide');
                     }
                 } elseif($_GET['action'] == 'updateComment') {
-                    $post_id = intval($this->getParameter($_GET, 'postId'));
-                    if($post_id != 0) {
-                        $comment_id = intval($this->getParameter($_GET, 'commentId'));
-                        if($comment_id != 0) {
-                            if(!empty($_POST['author']) && !empty($_POST['comment'])) {
-                                $this->postController->updateComment($post_id, $comment_id, $_POST['author'], $_POST['comment']);
-                            } else {
-                                throw new \Exception('Tous les champs (auteur, commentaire) ne sont pas remplis !');
-                            }
-                        } else {
-                            throw new \Exception('Identifiant de commentaire non valide');
-                        }
-                    } else {
-                        throw new \Exception('Identifiant de billet non valide');
-                    }
+                    $post_id = $this->getParameter($_POST, 'post_id');
+                    $comment_id = $this->getParameter($_POST, '$comment_id');
+                    $author = $this->getParameter($_POST, '$author');
+                    $comment = $this->getParameter($_POST, '$comment');
+                    $this->postController->updateComment($post_id, $comment_id, $author, $comment);
                 } elseif($_GET['action'] == 'listEntities') {
                     $this->entityController->listEntities();
                 } elseif($_GET['action'] == 'addEntity') {
