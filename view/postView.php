@@ -28,7 +28,9 @@
     foreach ($comments as $comment):
         if(isset($comment_id) && $comment['id'] == $comment_id) {
 ?>
-    <form action="?action=updateComment&postId=<?= $post['id'] ?>&commentId=<?= $comment['id'] ?>" method="post">
+    <form action="?action=updateComment" method="post">
+        <input type="hidden" name="post_id" value="<?= $post['id'] ?>">
+        <input type="hidden" name="comment_id" value="<?= $comment['id'] ?>">
         <p><input type="text" id="author" name="author" value="<?= htmlspecialchars($comment['author']) ?>" /> le <?= $comment['comment_date'] ?></p>
         <p><textarea id="comment" name="comment"><?= nl2br(htmlspecialchars($comment['comment'])) ?></textarea></p>
         <input type="submit" />
