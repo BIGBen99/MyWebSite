@@ -3,7 +3,7 @@
 <?php foreach ($posts as $post): ?>
     <article class="news">
         <header>
-            <a href="?controller=home&action=index&id=<?= $post['id'] ?>"><h2><?= $this->clean($post['title']) ?> le <time><?= $this->clean($post['creation_date']) ?></time></h2></a>
+            <a href="home/index/<?= $post['id'] ?>"><h2><?= $this->clean($post['title']) ?> le <time><?= $this->clean($post['creation_date']) ?></time></h2></a>
         </header>
         <p>
             <?= $this->clean($post['content']) ?>
