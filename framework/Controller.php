@@ -27,7 +27,6 @@ abstract class Controller {
     protected function generateView($viewData = array()) {
         $controllerClass = get_class($this);
         $controller = strtolower(str_replace('Controller', '', str_replace('BIGBen\MyWebSite\Controller\\', '', $controllerClass)));
-        //echo 'Controller.php:controller=' . $controller . '<br>';
         $view = new \BIGBen\MyWebSite\Framework\View($this->action, $controller);
         $view->generate($viewData);
     }

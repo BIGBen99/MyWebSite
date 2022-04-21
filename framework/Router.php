@@ -12,10 +12,6 @@ class Router {
             $controller = $this->createController($request);
             $action = $this->createAction($request);
             
-            echo $controller;
-            echo $action;
-
-            //echo 'Router.php:action=' . $action . '<br>';
             $controller->executeAction($action);
         } catch(Exception $e) {
             $this->manageError($e);

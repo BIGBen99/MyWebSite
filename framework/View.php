@@ -10,7 +10,6 @@ class View {
         if($controller != '') {
             $file = $file . $controller . '/';
         }
-        //echo 'View.php:controller=' . $controller . '<br>';
         $this->file = $file . $action . ".php";
     }
 
