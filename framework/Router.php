@@ -12,7 +12,7 @@ class Router {
             $controller = $this->createController($request);
             $action = $this->createAction($request);
             
-            echo 'Router.php:action=' . $action . '<br>';
+            //echo 'Router.php:action=' . $action . '<br>';
             $controller->executeAction($action);
         } catch(Exception $e) {
             $this->manageError($e);
