@@ -29,7 +29,7 @@ class Router {
         $controllerFile = 'controller/' . $controllerClass . '.php';
         if(file_exists($controllerFile)) {
             require($controllerFile);
-            $controller = new ('\BIGBen\MyWebSite\Controller\\' . $controllerClass());
+            $controller = new ('\BIGBen\MyWebSite\Controller\\' . $controllerClass)();
             $controller->setRequest($request);
             return $controller;
         } else {
