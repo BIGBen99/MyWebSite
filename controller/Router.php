@@ -96,18 +96,7 @@ class Router {
                     $this->entityController->listEntities();
                 } elseif($_GET['action'] == 'addEntity') {
                     if (!empty($_POST['name'])) {
-                        echo 'siren=[' . $_POST['siren'] . ']<br>';
-                        echo 'numeroInternedeClassement=[' . $_POST['numeroInternedeClassement'] . ']<br>';
-                        echo 'name=[' . $_POST['name'] . ']<br>';
-                        echo 'parent_id=[' . $_POST['parent_id'] . ']<br>';
-                        echo 'address_line1=[' . $_POST['address_line1'] . ']<br>';
-                        echo 'address_line2=[' . $_POST['address_line2'] . ']<br>';
-                        echo 'address_line3=[' . $_POST['address_line3'] . ']<br>';
-                        echo 'address_zipCode=[' . $_POST['address_zipCode'] . ']<br>';
-                        echo 'address_city=[' . $_POST['address_city'] . ']<br>';
-                        echo 'address_country=[' . $_POST['address_country'] . ']<br>';
-                        echo 'address_pliNonDistribuable=[' . $_POST['address_pliNonDistribuable'] . ']<br>';
-                        //$this->entityController->addEntity($_POST['siren'], $_POST['numeroInternedeClassement'], $_POST['name'], $_POST['parent_id'], $_POST['address_line1'], $_POST['address_line2'], $_POST['address_line3'], $_POST['address_zipCode'], $_POST['address_city'], $_POST['address_country'], $_POST['address_pliNonDistribuable']);
+                        $this->entityController->addEntity($_POST['siren'], $_POST['numeroInternedeClassement'], $_POST['name'], $_POST['parent_id'], $_POST['address_line1'], $_POST['address_line2'], $_POST['address_line3'], $_POST['address_zipCode'], $_POST['address_city'], $_POST['address_country'], isset($_POST['address_pliNonDistribuable'])?true:false);
                     } else {
                         throw new \Exception('Tous les champs ne sont pas remplis !');
                     }                    
