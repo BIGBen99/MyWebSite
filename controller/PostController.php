@@ -27,7 +27,8 @@ class PostController {
         if ($affectedLines === false) {
             throw new \Exception('Impossible d\'ajouter le commentaire !');
         } else {
-            header('Location: ?action=post&id=' . $post_id);
+            //header('Location: ?action=post&id=' . $post_id);
+            $this->post($post_id);
         }
     }
 
@@ -45,6 +46,7 @@ class PostController {
             throw new Exception('Impossible de mettre à jour le commentaire !');
         } else {
             header('Location: ?action=post&id=' . $post_id);
+            $this->post($post_id);
         }
     }
 }
