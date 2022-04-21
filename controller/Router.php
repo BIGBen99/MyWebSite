@@ -77,7 +77,7 @@ class Router {
         if(isset($table[$name])) {
             return $table[$name];
         } else {
-            throw new \Exception('Paramètre ' . $nom . ' absent');
+            throw new \Exception('Paramètre ' . $name . ' absent');
         }
     }
 }
