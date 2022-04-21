@@ -1,6 +1,5 @@
 <?php $title = 'Mon blog'; ?>
 
-<?php ob_start(); ?>
 <table>
   <thead>
   <tr>
@@ -49,6 +48,3 @@ foreach ($entities as $entity):
 <?php endforeach; ?>
   </tbody>
 </table>
-<?php $content = ob_get_clean(); ?>
-
-<?php require('template.php'); ?>
