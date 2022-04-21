@@ -5,8 +5,12 @@ class View {
     private $file;
     private $title;
 
-    public function __construct($action) {
-        $this->file = 'view/' . $action . "View.php";
+    public function __construct($action, $controller = '') {
+        $file = 'view/';
+        if($controller != '') {
+            $file = $file . $controller . '/';
+        }
+        $this->file = $fichier . $action . ".php";
     }
 
     public function generate($data) {
