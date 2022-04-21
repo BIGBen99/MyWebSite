@@ -99,7 +99,7 @@ class Router {
                         echo '$siren=[' . $_POST['siren'] . ']<br>';
                         //$this->entityController->addEntity($_POST['siren'], $_POST['numeroInternedeClassement'], $_POST['name'], $_POST['parent_id'], $_POST['address_line1'], $_POST['address_line2'], $_POST['address_line3'], $_POST['address_zipCode'], $_POST['address_city'], $_POST['address_country'], $_POST['address_pliNonDistribuable']);
                     } else {
-                        throw new Exception('Tous les champs ne sont pas remplis !');
+                        throw new \Exception('Tous les champs ne sont pas remplis !');
                     }                    
                 } else {
                     throw new \Exception('Action (' . $_GET['action'] . ') non valide');
