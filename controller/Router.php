@@ -30,16 +30,10 @@ class Router {
                 } elseif($_GET['action'] == 'listPosts') {
                     $this->homeController->home();
                 } elseif($_GET['action'] == 'addComment') {
-                    $post_id = intval($this->getParameter($_GET, 'id'));
-                    if($post_id != 0) {
-                        if(!empty($_POST['author']) && !empty($_POST['comment'])) {
-                            $this->postController->addComment($post_id, $_POST['author'], $_POST['comment']);
-                        } else {
-                            throw new \Exception('Tous les champs (auteur, commentaire) ne sont pas remplis !');
-                        }
-                    } else {
-                        throw new \Exception('Identifiant de billet non défini');
-                    }
+                    $post_id = $this->getParameter($_POST, 'post_id');
+                    $author = $this->getParameter($_POST, 'author');
+                    $comment = $this->getParameter($_POST, 'comment');
+                    $this->postController->addComment($post_id, $author, $comment);
                 } elseif($_GET['action'] == 'modifyComment') {
                     $post_id = intval($this->getParameter($_GET, 'postId'));
                     if($post_id != 0) {
@@ -50,7 +44,7 @@ class Router {
                             throw new \Exception('Identifiant de commentaire non valide');
                         }
                     } else {
-                        throw new \Exception('Identifiant de billet non défini');
+                        throw new \Exception('Identifiant de billet non valide');
                     }
                 } elseif($_GET['action'] == 'updateComment') {
                     $post_id = intval($this->getParameter($_GET, 'postId'));
