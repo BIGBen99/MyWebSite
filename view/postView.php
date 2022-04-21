@@ -9,7 +9,8 @@
 <hr />
 <h2>Commentaires</h2>
 
-<form action="?action=addComment&id=<?= $post['id'] ?>" method="post">
+<form action="?action=addComment" method="post">
+    <input type="hidden" name="post_id" value="<?= $post['id'] ?>">
     <div>
         <label for="author">Auteur</label><br />
         <input type="text" id="author" name="author" />
