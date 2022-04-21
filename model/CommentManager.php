@@ -3,7 +3,7 @@ namespace BIGBen\MyWebSite\Model;
 
 require_once('framework/Manager.php');
 
-class CommentManager extends \BIGBen\MyWebSite\Model\Manager {
+class CommentManager extends \BIGBen\MyWebSite\Framework\Manager {
     public function getComments($postId) {
         $comments = $this->executeQuery('SELECT id, author, comment, comment_date FROM comments WHERE post_id = ? ORDER BY comment_date DESC', array($postId));
 
