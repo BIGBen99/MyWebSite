@@ -11,6 +11,7 @@ class View {
             $file = $file . $controller . '/';
         }
         $this->file = $file . $action . ".php";
+        echo $this->file;
     }
 
     public function generate($data) {
