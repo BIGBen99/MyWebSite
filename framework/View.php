@@ -15,7 +15,10 @@ class View {
 
     public function generate($data) {
         $content = $this->generateFile($this->file, $data);
-        $view = $this->generateFile('view/template.php', array('title' => $this->title, 'content' => $content));
+        
+        $webRoot = Configuration::get('webRoot', "/");
+        
+        $view = $this->generateFile('view/template.php', array('title' => $this->title, 'content' => $content, 'webRoot' => $webRoot));
 
         echo $view;
     }
