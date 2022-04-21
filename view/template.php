@@ -12,7 +12,10 @@
                 <a href="/"><h1 id="titreBlog">Mon super blog !</h1></a>
                 <p>Je vous souhaite la bienvenue sur ce modeste blog.</p>
             </header>
-            <a href="/">Home</a><a href="?action=listEntities">Entities</a>
+            <nav>
+                <a href="/">Home</a>
+                <a href="?action=listEntities">Entities</a>
+            </nav>
             <div id="contenu">
                 <?= $content ?>
             </div> <!-- #contenu -->
