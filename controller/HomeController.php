@@ -1,19 +1,18 @@
 <?php
 namespace BIGBen\MyWebSite\Controller;
 
+require_once('framework/Controller.php');
 require_once('model/PostManager.php');
-require_once('view/View.php');
 
-class HomeController {
+class HomeController extends Controller {
     private $postManager;
 
     public function __construct() {
         $this->postManager = new \BIGBen\MyWebSite\Model\PostManager();
     }
 
-    public function home() {
+    public function index() {
         $posts = $this->postManager->getPosts();
-        $view = new \BIGBen\MyWebSite\View\View("listPosts");
-        $view->generate(array('posts' => $posts));
+        $this->generateView(array('posts' => $posts));
     }
 }
