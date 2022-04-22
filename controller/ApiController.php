@@ -17,5 +17,11 @@ class ApiController extends \BIGBen\MyWebSite\Framework\Controller {
     
     public function entities() {
         $entities = $this->entityManager->getEntities();
+        echo '[';
+        foreach($entities as $entity):
+            echo '{';
+            echo '}';
+        endforeach;            
+        echo ']';
     }
 }
