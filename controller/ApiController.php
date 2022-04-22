@@ -29,8 +29,10 @@ class ApiController extends \BIGBen\MyWebSite\Framework\Controller {
             echo "\t{\n";
             echo "\t\t\"id\": " . $entity['id'];
             echo ",\n\t\t\"siren\": \"" . $entity['siren'] . "\"";
-            echo ",\n\t\t\"numeroInternedeClassement\": \"" . $entity['numeroInternedeClassement'] . "\"";
-            echo ",\n\t\t\"siret\": \"" . $entity['siren'] . $entity['numeroInternedeClassement'] . "\"";
+            if(!empty($entity['numeroInternedeClassement'])) {
+                echo ",\n\t\t\"numeroInternedeClassement\": \"" . $entity['numeroInternedeClassement'] . "\"";
+                echo ",\n\t\t\"siret\": \"" . $entity['siren'] . $entity['numeroInternedeClassement'] . "\"";
+            }
             echo "\n\t}";
         endforeach;            
         echo "\n]";
