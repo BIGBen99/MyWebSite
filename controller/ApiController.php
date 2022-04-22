@@ -33,6 +33,14 @@ class ApiController extends \BIGBen\MyWebSite\Framework\Controller {
                 echo ",\n\t\t\"numeroInternedeClassement\": \"" . $entity['numeroInternedeClassement'] . "\"";
                 echo ",\n\t\t\"siret\": \"" . $entity['siren'] . $entity['numeroInternedeClassement'] . "\"";
             }
+            echo ",\n\t\t\"name\": \"" . $entity['name'] . "\"";
+            if(!empty($entity['address_line1']) || !empty($entity['address_line2']) || !empty($entity['address_line3']) || !empty($entity['address_zipCode']) || !empty($entity['address_city']) || !empty($entity['address_country']) || !empty($entity['address_pliNonDistribuable'])) {
+                echo ",\n\t\t\"address\": {\n";
+                if(!empty($entity['address_line1'])) {
+                    echo "\t\t\t\"line1\": \"" . $entity['address_line'] . "\"";
+                }
+                echo "}";
+            }
             echo "\n\t}";
         endforeach;            
         echo "\n]";
