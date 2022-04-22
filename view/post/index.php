@@ -1,6 +1,6 @@
 <?php $title = 'Mon blog - ' . $this->clean($post['title']); ?>
 
-<p><a href="?action=listPosts">Retour à la liste des billets</a></p>
+<p><a href="/">Retour à la liste des billets</a></p>
 
 <div class="news">
     <h2><?= $this->clean($post['title']) ?> le <time><?= $this->clean($post['creation_date']) ?></time></h2>
@@ -9,7 +9,7 @@
 <hr />
 <h2>Commentaires</h2>
 
-<form action="?action=addComment" method="post">
+<form action="/post/addComment" method="post">
     <input type="hidden" name="post_id" value="<?= $post['id'] ?>">
     <div>
         <label for="author">Auteur</label><br />
@@ -28,7 +28,7 @@
     foreach ($comments as $comment):
         if(isset($comment_id) && $comment['id'] == $comment_id) {
 ?>
-    <form action="?action=updateComment" method="post">
+    <form action="/post/updateComment" method="post">
         <input type="hidden" name="post_id" value="<?= $post['id'] ?>">
         <input type="hidden" name="comment_id" value="<?= $comment['id'] ?>">
         <p><input type="text" id="author" name="author" value="<?= htmlspecialchars($comment['author']) ?>" /> le <?= $comment['comment_date'] ?></p>
@@ -38,7 +38,7 @@
 <?php
         } else {
 ?>
-    <p><strong><?= $this->clean($comment['author']) ?></strong> le <?= $this->clean($comment['comment_date']) ?> (<a href="?action=modifyComment&postId=<?= $post['id'] ?>&commentId=<?= $comment['id'] ?>">modifier</a>)</p>
+    <p><strong><?= $this->clean($comment['author']) ?></strong> le <?= $this->clean($comment['comment_date']) ?> (<a href="/post/modidyComment/?action=modifyComment&postId=<?= $post['id'] ?>&commentId=<?= $comment['id'] ?>">modifier</a>)</p>
     <p><?= $this->clean($comment['comment']) ?></p>
 <?php
         }
