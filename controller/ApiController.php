@@ -19,9 +19,10 @@ class ApiController extends \BIGBen\MyWebSite\Framework\Controller {
         $entities = $this->entityManager->getEntities();
         echo "[\n";
         foreach($entities as $entity):
-            echo '\t{\n';
-            echo '"id": ' . $entity['id'] . '\n';
-            echo '\t}\n';
+            echo "\t{\n";
+            echo "\t\t\"id\": " . $entity['id'] . ",\n";
+            echo "\t\t\"siren\": " . $entity['siren'] . ",\n";
+            echo "\t}\n";
         endforeach;            
         echo ']';
     }
