@@ -16,14 +16,21 @@ class ApiController extends \BIGBen\MyWebSite\Framework\Controller {
     }
     
     public function entities() {
+        $first = true;
+        
         $entities = $this->entityManager->getEntities();
         echo "[\n";
         foreach($entities as $entity):
+            if($first) {
+                $first = false;
+            } else {
+                echo ", \n";
+            }
             echo "\t{\n";
             echo "\t\t\"id\": " . $entity['id'] . ",\n";
             echo "\t\t\"siren\": " . $entity['siren'] . ",\n";
-            echo "\t}\n";
+            echo "\t}";
         endforeach;            
-        echo ']';
+        echo "\n]";
     }
 }
