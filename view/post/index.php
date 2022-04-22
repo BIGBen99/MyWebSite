@@ -38,7 +38,7 @@
 <?php
         } else {
 ?>
-    <p><strong><?= $this->clean($comment['author']) ?></strong> le <?= $this->clean($comment['comment_date']) ?> (<a href="/post/modidyComment/?action=modifyComment&postId=<?= $post['id'] ?>&commentId=<?= $comment['id'] ?>">modifier</a>)</p>
+    <p><strong><?= $this->clean($comment['author']) ?></strong> le <?= $this->clean($comment['comment_date']) ?> (<a href="/post/modidyComment/<?= $comment['id'] ?>">modifier</a>)</p>
     <p><?= $this->clean($comment['comment']) ?></p>
 <?php
         }
