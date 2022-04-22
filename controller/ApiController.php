@@ -16,6 +16,8 @@ class ApiController extends \BIGBen\MyWebSite\Framework\Controller {
     }
     
     public function entities() {
+        echo $this->request->getParameter('name');
+        
         $first = true;
         
         $entities = $this->entityManager->getEntities();
