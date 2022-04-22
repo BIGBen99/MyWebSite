@@ -37,9 +37,9 @@ class ApiController extends \BIGBen\MyWebSite\Framework\Controller {
             if(!empty($entity['address_line1']) || !empty($entity['address_line2']) || !empty($entity['address_line3']) || !empty($entity['address_zipCode']) || !empty($entity['address_city']) || !empty($entity['address_country']) || !empty($entity['address_pliNonDistribuable'])) {
                 echo ",\n\t\t\"address\": {\n";
                 if(!empty($entity['address_line1'])) {
-                    echo "\t\t\t\"line1\": \"" . $entity['address_line1'] . "\"";
+                    echo "\t\t\t\"line1\": \"" . $entity['address_line1'] . "\"\n";
                 }
-                echo "}";
+                echo "\t\t}";
             }
             echo "\n\t}";
         endforeach;            
