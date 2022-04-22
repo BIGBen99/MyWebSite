@@ -1,4 +1,4 @@
-<?php $title = 'Mon blog - ' . $this->clean($post['title']); ?>
+<?php $this->title = 'Mon blog - ' . $this->clean($post['title']); ?>
 
 <p><a href="/">Retour à la liste des billets</a></p>
 
