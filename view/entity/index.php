@@ -14,7 +14,7 @@
     <th>PND</th>
     <th>Date de création</th>
   </tr>
-  <form method="post" action="?action=addEntity">
+  <form method="post" action="/entity/addEntity">
   <tr>
     <td></td>
     <td><input name="siren" type="text" placeholder="SIREN" size="9"></td>
