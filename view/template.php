@@ -15,7 +15,7 @@
             </header>
             <nav>
                 <a href="/">Home</a>
-                <a href="?controller=entity&action=index">Entities</a>
+                <a href="/entity/index">Entities</a>
             </nav>
             <div id="contenu">
                 <?= $content ?>
