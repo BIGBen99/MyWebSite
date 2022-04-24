@@ -8,7 +8,7 @@ class Configuration {
         if (isset(self::getParameters()[$name])) {
             $value = self::getParameters()[$name];
         } else {
-            $value = $defautValue;
+            $value = $defaultValue;
         }
         return $value;
     }
