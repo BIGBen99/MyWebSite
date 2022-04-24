@@ -3,6 +3,7 @@ CREATE TABLE `bc_entities` (
     `siren`                       VARCHAR(9),
     `numeroInternedeClassement`   VARCHAR(5),
     `name`                        VARCHAR(255) NOT NULL,
+    `parent_id`                   INT(11),
     `address_line1`               VARCHAR(255),
     `address_line2`               VARCHAR(255),
     `address_line3`               VARCHAR(255),
