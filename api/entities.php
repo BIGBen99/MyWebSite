@@ -36,7 +36,8 @@
     $siren = $_POST['siren'];
     $nic = $_POST['numeroInternedeClassement'];
     
-//    echo $query="INSERT INTO bc_entities(siren, numeroInternedeClassement, creation_date) VALUES('" . $siren . "', '" . $nic . "', NOW())";
+    $query="INSERT INTO bc_entities(siren, numeroInternedeClassement, creation_date) VALUES('" . $siren . "', '" . $nic . "', NOW())";
+//    echo $query;
     if($response = $dbLink->query($query)) {
       header("HTTP/1.0 200 OK");
     } else {
