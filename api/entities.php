@@ -29,7 +29,7 @@
     foreach  ($dbLink->query($query) as $row) {
       $response .= '{';
       $response .= '"id": ' . $row['id'];
-      $response .= ',"siren":' . $row['siren'];
+      $response .= ',"siren": "' . $row['siren'] . '"';
       $response .= '},';
     }
     $response = substr($response, 0, -1);
