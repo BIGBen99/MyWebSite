@@ -20,16 +20,22 @@
   }
 
   function getEntities($dbLink, $id=0) {
-    $query = 'SELECT bc_entities.id, siren FROM bc_entities, bc_cityZipCodeCountry WHERE bc_entities.address_cityZipCodeCountry_id = bc_cityZipCodeCountry.id';
+    $query = 'SELECT * FROM bc_entities, bc_cityZipCodeCountry WHERE bc_entities.address_cityZipCodeCountry_id = bc_cityZipCodeCountry.id';
+    $response = '[';
     if($id != 0) {
       $query .= ' AND id = ' . $id . ' LIMIT 1';
+      $response = '';
     }
-    $response = array();
     foreach  ($dbLink->query($query) as $row) {
-      $response[] = $row;
-    }    
+      $response .= '{';
+      $response .= '},';
+    }
+    $response = substr($response, 0, -1);
+    if($id = 0) {
+      $response .= ']';
+    }
     header('Content-Type: application/json');
-    echo json_encode($response, JSON_PRETTY_PRINT);
+    echo $response;
   }
 
   function AddEntity($dbLink) {
