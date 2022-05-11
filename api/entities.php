@@ -20,24 +20,29 @@
   }
 
   function getEntities($dbLink, $id=0) {
-    $query = 'SELECT bc_entities.id as id, siren, numeroInternedeClassement, name FROM bc_entities LEFT JOIN bc_cityZipCodeCountry ON bc_entities.address_cityZipCodeCountry_id = bc_cityZipCodeCountry.id';
-    $response = '[';
+    $query = 'SELECT bc_entities.id as id, siren, numeroInternedeClassement, name, address_line1 FROM bc_entities LEFT JOIN bc_cityZipCodeCountry ON bc_entities.address_cityZipCodeCountry_id = bc_cityZipCodeCountry.id';
+    $response = '[\n';
     if($id != 0) {
       $query .= ' WHERE bc_entities.id = ' . $id . ' LIMIT 1';
       $response = '';
     }
     foreach  ($dbLink->query($query) as $row) {
-      $response .= '{';
-      $response .= '"id": ' . $row['id'];
-      if(!empty($row['siren'])) $response .= ',"siren": "' . $row['siren'] . '"';
-      if(!empty($row['numeroInternedeClassement'])) $response .= ',"numeroInternedeClassement": "' . $row['numeroInternedeClassement'] . '"';
-      if(!empty($row['siren']) && !empty($row['numeroInternedeClassement'])) $response .= ',"siret": "' . $row['siren'] . $row['numeroInternedeClassement'] . '"';
-      $response .= ',"name": "' . $row['name'] . '"';
-      $response .= '},';
+      $response .= '{\n';
+      $response .= '"id": ' . $row['id'] . '\n';
+      if(!empty($row['siren'])) $response .= ', "siren": "' . $row['siren'] . '"\n';
+      if(!empty($row['numeroInternedeClassement'])) $response .= ', "numeroInternedeClassement": "' . $row['numeroInternedeClassement'] . '"\n';
+      if(!empty($row['siren']) && !empty($row['numeroInternedeClassement'])) $response .= ', "siret": "' . $row['siren'] . $row['numeroInternedeClassement'] . '"\n';
+      $response .= ',"name": "' . $row['name'] . '"\n';
+      if(!empty($row['address_line1'])) {
+        $response .= ', "address": {\n';
+        $response .= '"line1": "' . $row['address_line1'] . '"\n';
+        $response .= '}\n'
+      }
+      $response .= '},\n';
     }
     $response = substr($response, 0, -1);
     if($id == 0) {
-      $response .= ']';
+      $response .= ']\n';
     }
     header('Content-Type: application/json');
     echo $response;
