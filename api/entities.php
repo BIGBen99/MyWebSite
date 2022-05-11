@@ -6,9 +6,9 @@
     case 'GET':
       if(!empty($_GET["id"])) {
         $id = intval($_GET["id"]);
-        getEntities($id);
+        getEntities($dbLink, $id);
       } else {
-        getEntities();
+        getEntities($dbLink);
       }
       break;
     default:
@@ -16,7 +16,7 @@
       break;
   }
 
-  function getEntities() {
+  function getEntities($dbLink) {
     $query = "SELECT * FROM bc_entities";
     $response = array();
     foreach  ($dbLink->query($query) as $row) {
