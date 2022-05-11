@@ -36,7 +36,7 @@
       if(!empty($row['address_line1'])) {
         $response .= ', "address": {\n';
         $response .= '"line1": "' . $row['address_line1'] . '"\n';
-        $response .= '}\n'
+        $response .= '}\n';
       }
       $response .= '},\n';
     }
