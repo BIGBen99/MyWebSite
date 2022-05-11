@@ -28,10 +28,11 @@
     }
     foreach  ($dbLink->query($query) as $row) {
       $response .= '{';
+      $response .= '"id": ' . $row['bc_entities.id'];
       $response .= '},';
     }
     $response = substr($response, 0, -1);
-    if($id = 0) {
+    if($id == 0) {
       $response .= ']';
     }
     header('Content-Type: application/json');
