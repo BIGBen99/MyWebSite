@@ -12,7 +12,7 @@
       }
       break;
     case 'POST':
-      addEntities($dbLink);
+      addEntity($dbLink);
       break;
     default:
       header("HTTP/1.0 405 Method Not Allowed");
@@ -32,7 +32,7 @@
     echo json_encode($response, JSON_PRETTY_PRINT);
   }
 
-  function AddProduct($dbLink) {
+  function AddEntity($dbLink) {
     $siren = $_POST['siren'];
     $nic = $_POST['numeroInternedeClassement'];
     
