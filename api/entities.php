@@ -40,7 +40,7 @@
       }
       $response .= "},\n";
     }
-    $response = substr($response, 0, -1);
+    $response = substr($response, 0, -2) . "\n";
     if($id == 0) {
       $response .= "]\n";
     }
