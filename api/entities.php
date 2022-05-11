@@ -38,9 +38,9 @@
         $response .= "\"line1\": \"" . $row['address_line1'] . "\"\n";
         if(!empty($row['address_line2'])) $response .= "\"line2\": \"" . $row['address_line2'] . "\"\n";
         if(!empty($row['address_line3'])) $response .= "\"line3\": \"" . $row['address_line3'] . "\"\n";
-        $response .= ", \"cityZipCodeCountry\": {";
-        $response .= "}";
-        $response .= ", \"pliNonDistribuable\": " . $row['address_pliNonDistribuable'];
+        $response .= ", \"cityZipCodeCountry\": {\n";
+        $response .= "}\n";
+        $response .= ", \"pliNonDistribuable\": " . $row['address_pliNonDistribuable'] . "\n";
         $response .= "}\n";
       }
       $response .= "},\n";
