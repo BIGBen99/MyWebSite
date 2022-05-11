@@ -37,18 +37,9 @@
     $nic = $_POST['numeroInternedeClassement'];
     
     echo $query="INSERT INTO bc_entities(siren, numeroInternedeClassement, creation_date) VALUES('" . $siren . "', '" . $nic . "', NOW())";
-    $dbLink->query($query);
-/*    if(mysqli_query($conn, $query)) {
-      $response=array(
-        'status' => 1,
-        'status_message' =>'Produit ajoute avec succes.'
-      );
+    if($response = $dbLink->query($query)) {
+      header("HTTP/1.0 200 OK");
     } else {
-      $response=array(
-        'status' => 0,
-        'status_message' =>'ERREUR!.'. mysqli_error($conn)
-      );
-    }*/
-    header('Content-Type: application/json');
-    echo json_encode($response);
+      header("HTTP/1.0 400 Method Not Allowed");
+    }
   }
