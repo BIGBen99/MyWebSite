@@ -29,9 +29,9 @@
     foreach  ($dbLink->query($query) as $row) {
       $response .= "{\n";
       $response .= "\"id\": " . $row['id'];
-      if(!empty($row['siren'])) $response .= ",\n \"siren\": \"" . $row['siren'] . "\"";
-      if(!empty($row['numeroInternedeClassement'])) $response .= ",\n \"numeroInternedeClassement\": \"" . $row['numeroInternedeClassement'] . "\"";
-      if(!empty($row['siren']) && !empty($row['numeroInternedeClassement'])) $response .= ",\n \"siret\": \"" . $row['siren'] . $row['numeroInternedeClassement'] . "\"";
+      if(!empty($row['siren'])) $response .= ",\n\"siren\": \"" . $row['siren'] . "\"";
+      if(!empty($row['numeroInternedeClassement'])) $response .= ",\n\"numeroInternedeClassement\": \"" . $row['numeroInternedeClassement'] . "\"";
+      if(!empty($row['siren']) && !empty($row['numeroInternedeClassement'])) $response .= ",\n\"siret\": \"" . $row['siren'] . $row['numeroInternedeClassement'] . "\"";
       $response .= ",\"name\": \"" . $row['name'] . "\"\n";
       if(!empty($row['address_line1'])) {
         $response .= ", \"address\": {\n";
