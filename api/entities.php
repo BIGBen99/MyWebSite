@@ -30,7 +30,8 @@
       $response .= '{';
       $response .= '"id": ' . $row['id'];
       $response .= ',"siren": "' . $row['siren'] . '"';
-      if(!empty($row['numeroInternedeClassement'])) $response .= ',"numeroInternedeClassement": "' .$row['numeroInternedeClassement'] . '"';
+      if(!empty($row['numeroInternedeClassement'])) $response .= ',"numeroInternedeClassement": "' . $row['numeroInternedeClassement'] . '"';
+      if(!empty($row['siren']) && !empty($row['numeroInternedeClassement'])) $response .= ',"siret": "' . $row['siren'] . $row['numeroInternedeClassement'] . '"';
       $response .= '},';
     }
     $response = substr($response, 0, -1);
