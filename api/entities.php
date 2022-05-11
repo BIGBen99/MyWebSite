@@ -20,9 +20,9 @@
   }
 
   function getEntities($dbLink, $id=0) {
-    $query = 'SELECT * FROM bc_entities';
+    $query = 'SELECT * FROM bc_entities, bc_cityZipCodeCountry WHERE bc_entities.address_cityZipCodeCountry_id = bc_cityZipCodeCountry.id';
     if($id != 0) {
-      $query .= ' WHERE id = ' . $id . ' LIMIT 1';
+      $query .= ' AND id = ' . $id . ' LIMIT 1';
     }
     $response = array();
     foreach  ($dbLink->query($query) as $row) {
