@@ -20,7 +20,7 @@
   }
 
   function getEntities($dbLink, $id=0) {
-    $query = 'SELECT * FROM bc_entities, bc_cityZipCodeCountry WHERE bc_entities.address_cityZipCodeCountry_id = bc_cityZipCodeCountry.id';
+    $query = 'SELECT bc_entities.id as id, siren FROM bc_entities, bc_cityZipCodeCountry WHERE bc_entities.address_cityZipCodeCountry_id = bc_cityZipCodeCountry.id';
     $response = '[';
     if($id != 0) {
       $query .= ' AND id = ' . $id . ' LIMIT 1';
@@ -28,7 +28,7 @@
     }
     foreach  ($dbLink->query($query) as $row) {
       $response .= '{';
-      $response .= '"id": ' . $row['bc_entities.id'];
+      $response .= '"id": ' . $row['id'];
       $response .= '},';
     }
     $response = substr($response, 0, -1);
