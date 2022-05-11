@@ -20,7 +20,7 @@
   }
 
   function getEntities($dbLink, $id=0) {
-    $query = 'SELECT bc_entities.id as id, siren FROM bc_entities LEFT JOIN bc_cityZipCodeCountry ON bc_entities.address_cityZipCodeCountry_id = bc_cityZipCodeCountry.id';
+    $query = 'SELECT bc_entities.id as id, siren, numeroInternedeClassement FROM bc_entities LEFT JOIN bc_cityZipCodeCountry ON bc_entities.address_cityZipCodeCountry_id = bc_cityZipCodeCountry.id';
     $response = '[';
     if($id != 0) {
       $query .= ' WHERE id = ' . $id . ' LIMIT 1';
@@ -30,6 +30,7 @@
       $response .= '{';
       $response .= '"id": ' . $row['id'];
       $response .= ',"siren": "' . $row['siren'] . '"';
+      $response .= ',"numeroInternedeClassement": "' .$row['numeroInternedeClassement'] . '"';
       $response .= '},';
     }
     $response = substr($response, 0, -1);
