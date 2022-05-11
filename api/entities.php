@@ -20,7 +20,7 @@
   }
 
   function getEntities($dbLink, $id=0) {
-    $query = 'SELECT bc_entities.id as id, siren, numeroInternedeClassement, name, address_line1, address_line2, address_line3, address_cityZipCodeCountry_id, zipCode, city, country ,address_pliNonDistribuable FROM bc_entities LEFT JOIN bc_cityZipCodeCountry ON bc_entities.address_cityZipCodeCountry_id = bc_cityZipCodeCountry.id';
+    $query = 'SELECT bc_entities.id as id, siren, numeroInternedeClassement, name, address_line1, address_line2, address_line3, address_cityZipCodeCountry_id, zipCode, city, country ,address_pliNonDistribuable, parent_id FROM bc_entities LEFT JOIN bc_cityZipCodeCountry ON bc_entities.address_cityZipCodeCountry_id = bc_cityZipCodeCountry.id';
     $response = "[\n";
     if($id != 0) {
       $query .= ' WHERE bc_entities.id = ' . $id . ' LIMIT 1';
