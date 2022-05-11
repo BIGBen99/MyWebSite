@@ -40,7 +40,7 @@
         if(!empty($row['address_line3'])) $response .= "\"line3\": \"" . $row['address_line3'] . "\"\n";
         $response .= ", \"cityZipCodeCountry\": {\n";
         $response .= "}\n";
-        $response .= ", \"pliNonDistribuable\": " . $row['address_pliNonDistribuable'] . "\n";
+        $response .= ", \"pliNonDistribuable\": " . $row['address_pliNonDistribuable']==0?"false":"true" . "\n";
         $response .= "}\n";
       }
       $response .= "},\n";
