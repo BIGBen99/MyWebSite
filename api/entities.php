@@ -16,8 +16,11 @@
       break;
   }
 
-  function getEntities($dbLink) {
-    $query = "SELECT * FROM bc_entities";
+  function getEntities($dbLink, $id=0) {
+    $query = 'SELECT * FROM bc_entities';
+    if($id != 0) {
+      $query .= ' WHERE id = ' . $id . ' LIMIT 1';
+    }
     $response = array();
     foreach  ($dbLink->query($query) as $row) {
       $response[] = $row;
