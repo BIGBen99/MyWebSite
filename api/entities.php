@@ -27,21 +27,21 @@
       $response = '';
     }
     foreach  ($dbLink->query($query) as $row) {
-      $response .= "{\n";
+      $response .= "{";
       $response .= "\"id\": " . $row['id'];
-      if(!empty($row['siren'])) $response .= ",\n\"siren\": \"" . $row['siren'] . "\"";
-      if(!empty($row['numeroInternedeClassement'])) $response .= ",\n\"numeroInternedeClassement\": \"" . $row['numeroInternedeClassement'] . "\"";
-      if(!empty($row['siren']) && !empty($row['numeroInternedeClassement'])) $response .= ",\n\"siret\": \"" . $row['siren'] . $row['numeroInternedeClassement'] . "\"";
-      $response .= ",\"name\": \"" . $row['name'] . "\"\n";
+      if(!empty($row['siren'])) $response .= ", \"siren\": \"" . $row['siren'] . "\"";
+      if(!empty($row['numeroInternedeClassement'])) $response .= ", \"numeroInternedeClassement\": \"" . $row['numeroInternedeClassement'] . "\"";
+      if(!empty($row['siren']) && !empty($row['numeroInternedeClassement'])) $response .= ", \"siret\": \"" . $row['siren'] . $row['numeroInternedeClassement'] . "\"";
+      $response .= ", \"name\": \"" . $row['name'] . "\"";
       if(!empty($row['address_line1'])) {
-        $response .= ", \"address\": {\n";
-        $response .= "\"line1\": \"" . $row['address_line1'] . "\"\n";
-        if(!empty($row['address_line2'])) $response .= "\"line2\": \"" . $row['address_line2'] . "\"\n";
-        if(!empty($row['address_line3'])) $response .= "\"line3\": \"" . $row['address_line3'] . "\"\n";
-        $response .= ", \"cityZipCodeCountry\": {\n";
-        $response .= "}\n";
-        $response .= ", \"pliNonDistribuable\": " . ($row['address_pliNonDistribuable']==0?"false":"true") . "\n";
-        $response .= "}\n";
+        $response .= ", \"address\": {";
+        $response .= "\"line1\": \"" . $row['address_line1'] . "\"";
+        if(!empty($row['address_line2'])) $response .= ", \"line2\": \"" . $row['address_line2'] . "\"";
+        if(!empty($row['address_line3'])) $response .= ", \"line3\": \"" . $row['address_line3'] . "\"";
+        $response .= ", \"cityZipCodeCountry\": {";
+        $response .= "}";
+        $response .= ", \"pliNonDistribuable\": " . ($row['address_pliNonDistribuable']==0?"false":"true");
+        $response .= "}";
       }
       $response .= "},\n";
     }
