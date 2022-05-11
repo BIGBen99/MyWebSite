@@ -28,10 +28,10 @@
     }
     foreach  ($dbLink->query($query) as $row) {
       $response .= "{\n";
-      $response .= "\"id\": " . $row['id'] . "\n";
-      if(!empty($row['siren'])) $response .= ", \"siren\": \"" . $row['siren'] . "\"\n";
-      if(!empty($row['numeroInternedeClassement'])) $response .= ", \"numeroInternedeClassement\": \"" . $row['numeroInternedeClassement'] . "\"\n";
-      if(!empty($row['siren']) && !empty($row['numeroInternedeClassement'])) $response .= ", \"siret\": \"" . $row['siren'] . $row['numeroInternedeClassement'] . "\"\n";
+      $response .= "\"id\": " . $row['id'];
+      if(!empty($row['siren'])) $response .= ",\n \"siren\": \"" . $row['siren'] . "\"";
+      if(!empty($row['numeroInternedeClassement'])) $response .= ",\n \"numeroInternedeClassement\": \"" . $row['numeroInternedeClassement'] . "\"";
+      if(!empty($row['siren']) && !empty($row['numeroInternedeClassement'])) $response .= ",\n \"siret\": \"" . $row['siren'] . $row['numeroInternedeClassement'] . "\"";
       $response .= ",\"name\": \"" . $row['name'] . "\"\n";
       if(!empty($row['address_line1'])) {
         $response .= ", \"address\": {\n";
@@ -40,7 +40,7 @@
         if(!empty($row['address_line3'])) $response .= "\"line3\": \"" . $row['address_line3'] . "\"\n";
         $response .= ", \"cityZipCodeCountry\": {\n";
         $response .= "}\n";
-        $response .= ", \"pliNonDistribuable\": " . $row['address_pliNonDistribuable']==0?"false":"true" . "\n";
+        $response .= ", \"pliNonDistribuable\": " . ($row['address_pliNonDistribuable']==0?"false":"true") . "\n";
         $response .= "}\n";
       }
       $response .= "},\n";
