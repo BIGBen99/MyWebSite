@@ -16,5 +16,6 @@ CREATE TABLE `bc_entities` (
     FOREIGN KEY(`address_cityZipCodeCountry_id`)
       REFERENCES `bc_cityZipCodeCountry`(`id`)
         ON UPDATE CASCADE ON DELETE RESTRICT,  
+    `address_pliNonDistribuable`    BOOLEAN,
     `creation_date`                 DATETIME NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
