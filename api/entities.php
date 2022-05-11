@@ -47,6 +47,7 @@
         $response .= ", \"pliNonDistribuable\": " . ($row['address_pliNonDistribuable']==0?"false":"true");
         $response .= "}";
       }
+      if(!empty($row['parent_id'])) $response .= ", \"parentId\": " . $row['parent_id'];
       $response .= "},\n";
     }
     $response = substr($response, 0, -2) . "\n";
