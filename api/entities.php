@@ -23,7 +23,7 @@
     $query = 'SELECT bc_entities.id as id, siren, numeroInternedeClassement FROM bc_entities LEFT JOIN bc_cityZipCodeCountry ON bc_entities.address_cityZipCodeCountry_id = bc_cityZipCodeCountry.id';
     $response = '[';
     if($id != 0) {
-      $query .= ' WHERE id = ' . $id . ' LIMIT 1';
+      $query .= ' WHERE bc_entities.id = ' . $id . ' LIMIT 1';
       $response = '';
     }
     foreach  ($dbLink->query($query) as $row) {
