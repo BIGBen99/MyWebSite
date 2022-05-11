@@ -36,7 +36,7 @@
     $siren = $_POST['siren'];
     $nic = $_POST['numeroInternedeClassement'];
     
-    echo $query="INSERT INTO entities(siren, numeroInternedeClassement, creation_date) VALUES('" . $siren . "', '" . $numeroInternedeClassement . "', NOW())";
+    echo $query="INSERT INTO entities(siren, numeroInternedeClassement, creation_date) VALUES('" . $siren . "', '" . $nic . "', NOW())";
     $dbLink->query($query);
 /*    if(mysqli_query($conn, $query)) {
       $response=array(
