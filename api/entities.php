@@ -20,7 +20,7 @@
   }
 
   function getEntities($dbLink, $id=0) {
-    $query = 'SELECT bc_entities.id as id, siren, numeroInternedeClassement, name, address_line1 FROM bc_entities LEFT JOIN bc_cityZipCodeCountry ON bc_entities.address_cityZipCodeCountry_id = bc_cityZipCodeCountry.id';
+    $query = 'SELECT bc_entities.id as id, siren, numeroInternedeClassement, name, address_line1, address_line2, address_line3, address_pliNonDistribuable FROM bc_entities LEFT JOIN bc_cityZipCodeCountry ON bc_entities.address_cityZipCodeCountry_id = bc_cityZipCodeCountry.id';
     $response = "[\n";
     if($id != 0) {
       $query .= ' WHERE bc_entities.id = ' . $id . ' LIMIT 1';
@@ -36,6 +36,11 @@
       if(!empty($row['address_line1'])) {
         $response .= ", \"address\": {\n";
         $response .= "\"line1\": \"" . $row['address_line1'] . "\"\n";
+        if(!empty($row['address_line2'])) $response .= "\"line2\": \"" . $row['address_line2'] . "\"\n";
+        if(!empty($row['address_line3'])) $response .= "\"line3\": \"" . $row['address_line3'] . "\"\n";
+        $response .= ", \"cityZipCodeCountry\": {";
+        $response .= "}";
+        if(!empty($row['address_pliNonDistribuable'])) $response .= ", \"pliNonDistribuable\": " . $row['address_pliNonDistribuable'];
         $response .= "}\n";
       }
       $response .= "},\n";
