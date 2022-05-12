@@ -2,8 +2,6 @@
   require_once('db_connect.php');
   $request_method = $_SERVER['REQUEST_METHOD'];
   
-  echo 'name=' . $_GET['name'];
-
   switch($request_method) {
     case 'GET':
       if(!empty($_GET["id"])) {
@@ -27,6 +25,10 @@
     if($id != 0) {
       $query .= ' WHERE bc_entities.id = ' . $id . ' LIMIT 1';
       $response = '';
+    }
+    if(isset($_GET['name'])) {
+      echo 'name=' . $_GET['name'];
+      $query .= ' AND name like "%' . $_GET['name'] . '%"';
     }
     $query .= ' ORDER BY name ASC';
     foreach  ($dbLink->query($query) as $row) {
