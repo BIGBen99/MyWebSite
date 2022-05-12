@@ -53,7 +53,11 @@
       }
     }
     if($id == 0) {
-      $query .= ' ORDER BY name ASC';
+      if(isset($_GET['sortBy']) && $_GET['sortBy'] == 'DESC')) {
+        $query .= ' ORDER BY name DESC';
+      } else {
+        $query .= ' ORDER BY name ASC';
+      }
     }
 //    echo $query;
     foreach  ($dbLink->query($query) as $row) {
