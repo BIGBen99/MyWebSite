@@ -26,9 +26,17 @@
       $query .= ' WHERE bc_entities.id = ' . $id . ' LIMIT 1';
       $response = '';
     }
+    noWhere = false;
     if(isset($_GET['name'])) {
-      echo 'name=' . $_GET['name'];
       $query .= ' WHERE name like "%' . $_GET['name'] . '%"';
+      noWhere = true;
+    }
+    if(isset($_GET['siren'])) {
+      if(noWhere) {
+        $query .= ' AND siren like "' . $_GET['siren'] . '%"';
+      } else {
+        $query .= ' WHERE siren like "' . $_GET['siren'] . '%"';
+      }
     }
     if($id == 0) {
       $query .= ' ORDER BY name ASC';
