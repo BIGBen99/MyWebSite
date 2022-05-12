@@ -87,7 +87,7 @@
     if($id == 0 || !empty($response)) {
       header("HTTP/1.1 200 OK");
       header("Content-Type: application/json");
-      echo $response;
+      echo '***' . $response . '***';
     } else {
       header("HTTP/1.1 404 Not Found");
     }
