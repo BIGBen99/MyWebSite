@@ -53,7 +53,7 @@
       }
     }
     if($id == 0) {
-      if(isset($_GET['sortBy']) && $_GET['sortBy'] == 'DESC') {
+      if(isset($_GET['sortBy']) && strtoupper($_GET['sortBy']) == 'DESC') {
         $query .= ' ORDER BY name DESC';
       } else {
         $query .= ' ORDER BY name ASC';
