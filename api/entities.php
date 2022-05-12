@@ -26,6 +26,7 @@
       $query .= ' WHERE bc_entities.id = ' . $id . ' LIMIT 1';
       $response = '';
     }
+    $query .= ' ORDER BY name ASC';
     foreach  ($dbLink->query($query) as $row) {
       $response .= "{";
       $response .= "\"id\": " . $row['id'];
