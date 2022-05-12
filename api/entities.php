@@ -28,7 +28,7 @@
     }
     if(isset($_GET['name'])) {
       echo 'name=' . $_GET['name'];
-      $query .= ' AND name like "%' . $_GET['name'] . '%"';
+      $query .= ' WHERE name like "%' . $_GET['name'] . '%"';
     }
     $query .= ' ORDER BY name ASC';
     echo $query;
