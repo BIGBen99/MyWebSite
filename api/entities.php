@@ -80,14 +80,14 @@
       if(!empty($row['parent_id'])) $response .= ", \"parentId\": " . $row['parent_id'];
       $response .= "},\n";
     }
-    if($response != "[\n") $response = substr($response, 0, -2) . "\n";
+    if($response != "[\n" && $response != '') $response = substr($response, 0, -2) . "\n";
     if($id == 0) {
       $response .= "]\n";
     }
     if($id == 0 || !empty($response)) {
       header("HTTP/1.1 200 OK");
       header("Content-Type: application/json");
-      echo '***' . $response . '***';
+      echo $response;
     } else {
       header("HTTP/1.1 404 Not Found");
     }
