@@ -16,10 +16,10 @@
   }
 
   function getEntity($dbLink, $id) {
-    $query = 'SELECT * FROM bc_entities LEFT JOIN bc_cityZipCodeCountry ON bc_entities.address_cityZipCodeCountry_id = bc_cityZipCodeCountry.id WHERE bc_entities.id = ' . $id . ' LIMIT 1';
+    $query = 'SELECT bc_entities.id as id, siren, numeroInternedeClassement, name, address_line1, address_line2, address_line3, address_cityZipCodeCountry_id, zipCode, city, country ,address_pliNonDistribuable, parent_id FROM bc_entities LEFT JOIN bc_cityZipCodeCountry ON bc_entities.address_cityZipCodeCountry_id = bc_cityZipCodeCountry.id WHERE bc_entities.id = ' . $id . ' LIMIT 1';
     foreach($dbLink->query($query) as $row) {
       $response = "{";
-      $response .= "\"id\": " . $row['bc_entities.id'];
+      $response .= "\"id\": " . $row['id'];
       if(!empty($row['siren'])) $response .= ", \"siren\": \"" . $row['siren'] . "\"";
       if(!empty($row['numeroInternedeClassement'])) $response .= ", \"numeroInternedeClassement\": \"" . $row['numeroInternedeClassement'] . "\"";
       if(!empty($row['siren']) && !empty($row['numeroInternedeClassement'])) $response .= ", \"siret\": \"" . $row['siren'] . $row['numeroInternedeClassement'] . "\"";
