@@ -38,6 +38,20 @@
         $query .= ' WHERE siren like "' . $_GET['siren'] . '%"';
       }
     }
+    if(isset($_GET['siret'])) {
+      if($noWhere) {
+        $query .= ' AND CONCAT(siren, numeroInternedeClassement) like "' . $_GET['siret'] . '%"';
+      } else {
+        $query .= ' WHERE CONCAT(siren, numeroInternedeClassement) like "' . $_GET['siret'] . '%"';
+      }
+    }
+    if(isset($_GET['rootOnly']) && $_GET['rootOnly'] == 'true') {
+      if($noWhere) {
+        $query .= ' AND parent_id is NULL';
+      } else {
+        $query .= ' WHERE parent_id is NULL';
+      }
+    }
     if($id == 0) {
       $query .= ' ORDER BY name ASC';
     }
