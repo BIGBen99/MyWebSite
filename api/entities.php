@@ -28,7 +28,7 @@
     }
     $noWhere = false;
     if(isset($_GET['name'])) {
-      $query .= ' WHERE UPPER(name) like "%' . strtoupper($_GET['name']) . '%"';
+      $query .= ' WHERE name like "%' . $_GET['name'] . '%"';
       $noWhere = true;
     }
     if(isset($_GET['siren'])) {
