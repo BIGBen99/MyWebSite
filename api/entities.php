@@ -31,6 +31,7 @@
       $query .= ' AND name like "%' . $_GET['name'] . '%"';
     }
     $query .= ' ORDER BY name ASC';
+    echo $query;
     foreach  ($dbLink->query($query) as $row) {
       $response .= "{";
       $response .= "\"id\": " . $row['id'];
