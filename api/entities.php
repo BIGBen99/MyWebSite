@@ -30,7 +30,9 @@
       echo 'name=' . $_GET['name'];
       $query .= ' WHERE name like "%' . $_GET['name'] . '%"';
     }
-    $query .= ' ORDER BY name ASC';
+    if($id 0= 0) {
+      $query .= ' ORDER BY name ASC';
+    }
     echo $query;
     foreach  ($dbLink->query($query) as $row) {
       $response .= "{";
