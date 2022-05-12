@@ -18,7 +18,7 @@
   function getEntity($dbLink, $id) {
     $query = 'SELECT * FROM bc_entities LEFT JOIN bc_cityZipCodeCountry ON bc_entities.address_cityZipCodeCountry_id = bc_cityZipCodeCountry.id WHERE bc_entities.id = ' . $id . ' LIMIT 1';
     foreach($dbLink->query($query) as $row) {
-      $response .= "{";
+      $response = "{";
       $response .= "\"id\": " . $row['id'];
       if(!empty($row['siren'])) $response .= ", \"siren\": \"" . $row['siren'] . "\"";
       if(!empty($row['numeroInternedeClassement'])) $response .= ", \"numeroInternedeClassement\": \"" . $row['numeroInternedeClassement'] . "\"";
