@@ -84,8 +84,13 @@
     if($id == 0) {
       $response .= "]\n";
     }
-    header('Content-Type: application/json');
-    echo $response;
+    if($id == 0 || !empty($response)) {
+      header("HTTP/1.1 200 OK");
+      header("Content-Type: application/json");
+      echo $response;
+    } else {
+      header("HTTP/1.1 404 Not Found");
+    }
   }
 
   function AddEntity($dbLink) {
@@ -95,8 +100,8 @@
     $query="INSERT INTO bc_entities(siren, numeroInternedeClassement, creation_date) VALUES('" . $siren . "', '" . $nic . "', NOW())";
 //    echo $query;
     if($response = $dbLink->query($query)) {
-      header("HTTP/1.0 200 OK");
+      header("HTTP/1.1 200 OK");
     } else {
-      header("HTTP/1.0 400 Method Not Allowed");
+      header("HTTP/1.1 400 Method Not Allowed");
     }
   }
