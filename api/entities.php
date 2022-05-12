@@ -45,7 +45,7 @@
         $query .= ' WHERE CONCAT(siren, numeroInternedeClassement) like "' . $_GET['siret'] . '%"';
       }
     }
-    if(isset($_GET['rootOnly']) && $_GET['rootOnly'] == 'true') {
+    if(isset($_GET['rootOnly']) && strtoupper($_GET['rootOnly']) == 'TRUE') {
       if($noWhere) {
         $query .= ' AND parent_id is NULL';
       } else {
