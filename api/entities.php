@@ -30,7 +30,7 @@
       echo 'name=' . $_GET['name'];
       $query .= ' WHERE name like "%' . $_GET['name'] . '%"';
     }
-    if($id 0= 0) {
+    if($id == 0) {
       $query .= ' ORDER BY name ASC';
     }
     echo $query;
