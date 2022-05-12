@@ -26,13 +26,13 @@
       $query .= ' WHERE bc_entities.id = ' . $id . ' LIMIT 1';
       $response = '';
     }
-    noWhere = false;
+    $noWhere = false;
     if(isset($_GET['name'])) {
       $query .= ' WHERE name like "%' . $_GET['name'] . '%"';
-      noWhere = true;
+      $noWhere = true;
     }
     if(isset($_GET['siren'])) {
-      if(noWhere) {
+      if($noWhere) {
         $query .= ' AND siren like "' . $_GET['siren'] . '%"';
       } else {
         $query .= ' WHERE siren like "' . $_GET['siren'] . '%"';
@@ -41,7 +41,7 @@
     if($id == 0) {
       $query .= ' ORDER BY name ASC';
     }
-    echo $query;
+//    echo $query;
     foreach  ($dbLink->query($query) as $row) {
       $response .= "{";
       $response .= "\"id\": " . $row['id'];
