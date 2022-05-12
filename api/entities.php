@@ -58,7 +58,7 @@
       if(!empty($row['parent_id'])) $response .= ", \"parentId\": " . $row['parent_id'];
       $response .= "},\n";
     }
-    if($response != '[') $response = substr($response, 0, -2) . "\n";
+    if($response != "[\n") $response = substr($response, 0, -2) . "\n";
     if($id == 0) {
       $response .= "]\n";
     }
