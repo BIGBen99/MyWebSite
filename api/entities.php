@@ -2,7 +2,7 @@
   require_once('db_connect.php');
   $request_method = $_SERVER['REQUEST_METHOD'];
   
-  echo $_GET['name'];
+  echo 'name=' . $_GET['name'];
 
   switch($request_method) {
     case 'GET':
