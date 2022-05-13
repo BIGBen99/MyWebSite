@@ -4,5 +4,5 @@ CREATE TABLE `bc_cityZipCodeCountry` (
     `zipCode`                     VARCHAR(5),
     `country`                     VARCHAR(255),
     `creation_date`               DATETIME NOT NULL,
-    UNIQUE (`city`, `zipCode`, `country`)
+    UNIQUE UnicityConstraint (`city`, `zipCode`, `country`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
