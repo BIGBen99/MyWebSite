@@ -3,5 +3,6 @@ CREATE TABLE `bc_cityZipCodeCountry` (
     `city`                        VARCHAR(255),
     `zipCode`                     VARCHAR(5),
     `country`                     VARCHAR(255),
-    `creation_date`               DATETIME NOT NULL
+    `creation_date`               DATETIME NOT NULL,
+    UNIQUE (`city`, `zipCode`, `country`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
