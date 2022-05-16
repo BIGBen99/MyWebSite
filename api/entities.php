@@ -41,7 +41,7 @@
       if(!empty($row['parent_id'])) $response .= ", \"parentId\": " . $row['parent_id'];
       $response .= "},\n";
     }
-    if($response != '') {
+    if($response) {
       $response = substr($response, 0, -2) . "\n";
       header("HTTP/1.1 200 OK");
       header("Content-Type: application/json");
