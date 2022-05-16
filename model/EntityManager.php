@@ -5,7 +5,7 @@ require_once('framework/Manager.php');
 
 class EntityManager extends \BIGBen\MyWebSite\Framework\Manager {
     public function getEntities() {
-        $queryResult = $this->executeQuery('SELECT id, siren, numeroInternedeClassement, name, parent_id, address_line1, address_line2, address_line3, address_zipCode, address_city, address_country, address_pliNonDistribuable, creation_date FROM bc_entities ORDER BY name');
+        $queryResult = $this->executeQuery('SELECT id, siren, numeroInternedeClassement, name, parent_id, address_line1, address_line2, address_line3, address_cityZipCodeCountry_id, address_pliNonDistribuable, creation_date FROM bc_entities ORDER BY name');
 
         return $queryResult;
     }
