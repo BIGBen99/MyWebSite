@@ -1,6 +1,6 @@
 <?php $this->title = 'Mon blog - Liste des entités'; ?>
 
-<form method="post" action="/entity/addEntity">
+<!--form method="post" action="/entity/addEntity"-->
 <table>
   <thead>
   <tr>
@@ -15,7 +15,7 @@
     <th>PND</th>
     <th>Date de création</th>
   </tr>
-  <tr>
+  <!--tr>
     <td></td>
     <td><input name="siren" type="text" placeholder="SIREN" size="9"></td>
     <td><input name="numeroInternedeClassement" type="text" placeholder="NIC" size="5"></td>
@@ -26,7 +26,7 @@
     <td><input name="address_line1" type="text" placeholder="ligne 1"><br><input name="address_line2" type="text" placeholder="ligne 2"><br><input name="address_line3" type="text" placeholder="ligne 3"><br><input name="address_zipCode" type="text" placeholder="Code postal" size="7"><input name="address_city" type="text" placeholder="Ville" size="13"><br><input name="address_country" type="text" placeholder="Pays"><br></td>
     <td><input name="address_pliNonDistribuable" type="checkbox"></td>
     <td><input type="submit"></td>
-  </tr>
+  </tr-->
   </thead>
   <tbody>
 <?php
@@ -47,4 +47,4 @@ foreach ($entities as $entity):
 <?php endforeach; ?>
   </tbody>
 </table>
-</form>
+<!--/form-->
