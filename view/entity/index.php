@@ -40,7 +40,7 @@ foreach ($entities as $entity):
     <td><?= $this->clean($entity['name']) ?></td>
     <td><?= is_null($entity['parent_id'])?'X':'' ?></td>
     <td><?= !is_null($entity['parent_id'])?$this->clean($entity['parent_id']):'' ?></td>
-    <td><?= $this->clean($entity['address_line1']) ?>, <?= $this->clean($entity['address_line2']) ?>, <?= $this->clean($entity['address_line3']) ?>, <?= $this->clean($entity['address_zipCode']) ?> <?= $this->clean($entity['address_city']) ?>, <?= $this->clean($entity['address_country']) ?></td>
+    <td><?= $this->clean($entity['address_line1']) ?>, <?= $this->clean($entity['address_line2']) ?>, <?= $this->clean($entity['address_line3']) ?>, <?= $this->clean($entity['address_cityZipCodeCountry_id']) ?></td>
     <td><?= $entity['address_pliNonDistribuable'] > 0?'X':'' ?></td>
     <td><?= $this->clean($entity['creation_date']) ?></td>
   </tr>
