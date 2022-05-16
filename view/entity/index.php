@@ -23,7 +23,7 @@
     <td><input name="name" type="text" placeholder="Raison sociale"></td>
     <td></td>
     <td><input name="parent_id" type="text" placeholder="ID parent" size="5"></td> <!-- à remplacer par un select -->
-    <td><input name="address_line1" type="text" placeholder="ligne 1"><br><input name="address_line2" type="text" placeholder="ligne 2"><br><input name="address_line3" type="text" placeholder="ligne 3"><br><input name="address_zipCode" type="text" placeholder="Code postal" size="7"><input name="address_city" type="text" placeholder="Ville" size="13"><br><input name="address_country" type="text" placeholder="Pays"><br></td>
+    <!--td><input name="address_line1" type="text" placeholder="ligne 1"><br><input name="address_line2" type="text" placeholder="ligne 2"><br><input name="address_line3" type="text" placeholder="ligne 3"><br><input name="address_zipCode" type="text" placeholder="Code postal" size="7"><input name="address_city" type="text" placeholder="Ville" size="13"><br><input name="address_country" type="text" placeholder="Pays"><br></td>
     <td><input name="address_pliNonDistribuable" type="checkbox"></td>
     <td><input type="submit"></td>
   </tr-->
