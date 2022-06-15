@@ -81,7 +81,7 @@
         $query .= ' WHERE parent_id is NULL';
       }
     }
-    if(isset($_GET['sort']) && $_GET['sortBy'] == '-name') {
+    if(isset($_GET['sort']) && $_GET['sort'] == '-name') {
       $query .= ' ORDER BY name DESC';
     } else {
       $query .= ' ORDER BY name ASC';
