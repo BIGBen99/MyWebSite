@@ -16,7 +16,7 @@
   }
 
   function getEntity($dbLink, $code) {
-    $query = 'SELECT bc_entities.code as code, siren, numeroInternedeClassement, name, address_line1, address_line2, address_line3, address_zipCode, address_city, bc_country.id as country_id, bc_country.name as country_name,address_pliNonDistribuable, parent_id FROM bc_entities LEFT JOIN bc_country ON bc_entities.address_country_id = bc_country.id WHERE bc_entities.code = ' . $code . ' LIMIT 1';
+    $query = 'SELECT bc_entities.code as code, siren, numeroInternedeClassement, bc_entities.name as name, address_line1, address_line2, address_line3, address_zipCode, address_city, bc_country.id as country_id, bc_country.name as country_name,address_pliNonDistribuable, parent_id FROM bc_entities LEFT JOIN bc_country ON bc_entities.address_country_id = bc_country.id WHERE bc_entities.code = ' . $code . ' LIMIT 1';
     foreach($dbLink->query($query) as $row) {
       $response = "{";
       $response .= "\"code\": " . $row['code'];
