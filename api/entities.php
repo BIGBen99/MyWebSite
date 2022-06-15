@@ -19,7 +19,7 @@
     $query = 'SELECT bc_entities.code as code, siren, numeroInternedeClassement, bc_entities.name as name, address_line1, address_line2, address_line3, address_zipCode, address_city, bc_country.id as country_id, bc_country.name as country_name,address_pliNonDistribuable, parent_id FROM bc_entities LEFT JOIN bc_country ON bc_entities.address_country_id = bc_country.id WHERE bc_entities.code = ' . $code . ' LIMIT 1';
     foreach($dbLink->query($query) as $row) {
       $response = "{";
-      $response .= "\"code\": " . $row['code'];
+      $response .= "\"code\": \"" . $row['code'] . "\"";
       if(!empty($row['siren'])) $response .= ", \"siren\": \"" . $row['siren'] . "\"";
       if(!empty($row['numeroInternedeClassement'])) $response .= ", \"numeroInternedeClassement\": \"" . $row['numeroInternedeClassement'] . "\"";
       if(!empty($row['siren']) && !empty($row['numeroInternedeClassement'])) $response .= ", \"siret\": \"" . $row['siren'] . $row['numeroInternedeClassement'] . "\"";
