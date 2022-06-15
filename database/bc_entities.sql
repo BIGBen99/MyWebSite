@@ -11,10 +11,12 @@ CREATE TABLE `bc_entities` (
     `address_line1`                 VARCHAR(255),
     `address_line2`                 VARCHAR(255),
     `address_line3`                 VARCHAR(255),
-    `address_cityZipCodeCountry_id` INT(11),
-    INDEX(`address_cityZipCodeCountry_id`),
-    FOREIGN KEY(`address_cityZipCodeCountry_id`)
-      REFERENCES `bc_cityZipCodeCountry`(`id`)
+    `zipCode`                       VARCHAR(5),
+    `city`                          VARCHAR(32),
+    `country_id`                    INT(11),
+    INDEX(`country_id`),
+    FOREIGN KEY(`country_id`)
+      REFERENCES `bc_country`(`id`)
         ON UPDATE CASCADE ON DELETE RESTRICT,  
     `address_pliNonDistribuable`    BOOLEAN,
     `creation_date`                 DATETIME NOT NULL
