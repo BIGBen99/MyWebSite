@@ -38,7 +38,7 @@
         $response .= ", \"pliNonDistribuable\": " . ($row['address_pliNonDistribuable']==0?"false":"true");
         $response .= "}";
       }
-      if(!empty($row['parent_id'])) $response .= ", \"parentId\": " . $row['parent_id'];
+      if(!empty($row['parent_id'])) $response .= ", \"parentCode\": \"" . $row['parent_id'] . "\"";
       $response .= "},\n";
     }
     if(isset($response)) {
