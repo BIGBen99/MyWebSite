@@ -1,5 +1,5 @@
 CREATE TABLE `bc_entities` (
-    `id`                            INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `code`                          INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `siren`                         VARCHAR(9),
     `numeroInternedeClassement`     VARCHAR(5),
     `name`                          VARCHAR(255) NOT NULL,
