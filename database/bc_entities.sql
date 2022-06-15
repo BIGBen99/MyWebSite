@@ -17,7 +17,7 @@ CREATE TABLE `bc_entities` (
     `address_country_id`            INT(11),
     INDEX(`address_country_id`),
     FOREIGN KEY(`address_country_id`)
-      REFERENCES `address_bc_country`(`id`)
+      REFERENCES `bc_country`(`id`)
         ON UPDATE CASCADE ON DELETE RESTRICT,  
     `address_pliNonDistribuable`    BOOLEAN,
     `creation_date`                 DATETIME NOT NULL,
