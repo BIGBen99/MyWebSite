@@ -3,9 +3,9 @@
 
   switch($_SERVER['REQUEST_METHOD']) {
     case 'GET':
-      if(!empty($_GET["id"])) {
-        $id = intval($_GET["id"]);
-        getEntity($dbLink, $id);
+      if(!empty($_GET["code"])) {
+        $code = $_GET["code"];
+        getEntity($dbLink, $code);
       } else {
         getEntities($dbLink);
       }
@@ -16,10 +16,10 @@
   }
 
   function getEntity($dbLink, $code) {
-    $query = 'SELECT bc_entities.id as code, siren, numeroInternedeClassement, name, address_line1, address_line2, address_line3, address_cityZipCodeCountry_id, zipCode, city, country ,address_pliNonDistribuable, parent_id FROM bc_entities LEFT JOIN bc_cityZipCodeCountry ON bc_entities.address_cityZipCodeCountry_id = bc_cityZipCodeCountry.id WHERE bc_entities.id = ' . $code . ' LIMIT 1';
+    $query = 'SELECT bc_entities.code as code, siren, numeroInternedeClassement, name, address_line1, address_line2, address_line3, address_zipCode, address_city, bc_country.id as country_id, bc_country.name as country_name,address_pliNonDistribuable, parent_id FROM bc_entities LEFT JOIN bc_country ON bc_entities.address_country_id = bc_country.id WHERE bc_entities.code = ' . $code . ' LIMIT 1';
     foreach($dbLink->query($query) as $row) {
       $response = "{";
-      $response .= "\"id\": " . $row['id'];
+      $response .= "\"code\": " . $row['code'];
       if(!empty($row['siren'])) $response .= ", \"siren\": \"" . $row['siren'] . "\"";
       if(!empty($row['numeroInternedeClassement'])) $response .= ", \"numeroInternedeClassement\": \"" . $row['numeroInternedeClassement'] . "\"";
       if(!empty($row['siren']) && !empty($row['numeroInternedeClassement'])) $response .= ", \"siret\": \"" . $row['siren'] . $row['numeroInternedeClassement'] . "\"";
@@ -29,11 +29,11 @@
         $response .= "\"line1\": \"" . $row['address_line1'] . "\"";
         if(!empty($row['address_line2'])) $response .= ", \"line2\": \"" . $row['address_line2'] . "\"";
         if(!empty($row['address_line3'])) $response .= ", \"line3\": \"" . $row['address_line3'] . "\"";
-        $response .= ", \"cityZipCodeCountry\": {";
-        $response .= "\"id\": " . $row['address_cityZipCodeCountry_id'] . ", ";
         $response .= "\"zipCode\": \"" . $row['zipCode'] . "\", ";
         $response .= "\"city\": \"" . $row['city'] . "\", ";
-        $response .= "\"country\": \"" . $row['country'] . "\"";
+        $response .= ", \"country\": {";
+        $response .= "\"id\": " . $row['country_id'] . ", ";
+        $response .= "\"name\": \"" . $row['country_name'] . "\"";
         $response .= "}";
         $response .= ", \"pliNonDistribuable\": " . ($row['address_pliNonDistribuable']==0?"false":"true");
         $response .= "}";
