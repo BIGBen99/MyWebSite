@@ -16,7 +16,7 @@
   }
 
   function getEntity($dbLink, $code) {
-    $query = 'SELECT code, siren, numeroInternedeClassement, bc_entities.name as name, address_line1, address_line2, address_line3, address_zipCode, address_city, bc_country.id as country_id, bc_country.name as country_name,address_pliNonDistribuable, parent_id FROM bc_entities LEFT JOIN bc_country ON bc_entities.address_country_id = bc_country.id WHERE bc_entities.code = ' . $code . ' LIMIT 1';
+    $query = 'SELECT code, siren, numeroInternedeClassement, bc_entities.name as name, address_line1, address_line2, address_line3, address_zipCode, address_city, bc_country.id as country_id, bc_country.name as country_name,address_pliNonDistribuable, parent_id, subsidiaries FROM bc_entities LEFT JOIN bc_country ON bc_entities.address_country_id = bc_country.id WHERE bc_entities.code = ' . $code . ' LIMIT 1';
     foreach($dbLink->query($query) as $row) {
       $response = "{";
       $response .= "\"code\": \"" . $row['code'] . "\"";
@@ -36,6 +36,7 @@
         $response .= "\"name\": \"" . $row['country_name'] . "\"";
         $response .= "}";
         $response .= ", \"pliNonDistribuable\": " . ($row['address_pliNonDistribuable']==0?"false":"true");
+        if(!empty($row['subsidiaries'])) $response .= ", \"subsidiaries\": " . $row['subsidiaries'];
         $response .= "}";
       }
       if(!empty($row['parent_id'])) $response .= ", \"parentCode\": \"" . $row['parent_id'] . "\"";
