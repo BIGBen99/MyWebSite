@@ -30,7 +30,7 @@
         if(!empty($row['address_line2'])) $response .= ", \"line2\": \"" . $row['address_line2'] . "\"";
         if(!empty($row['address_line3'])) $response .= ", \"line3\": \"" . $row['address_line3'] . "\"";
         $response .= ", \"zipCode\": \"" . $row['address_zipCode'] . "\"";
-        $response .= ", \"city\": \"" . $row['address_city'] . "\", ";
+        $response .= ", \"city\": \"" . $row['address_city'] . "\"";
         $response .= ", \"country\": {";
         $response .= "\"id\": " . $row['country_id'] . ", ";
         $response .= "\"name\": \"" . $row['country_name'] . "\"";
@@ -98,7 +98,7 @@
         if(!empty($row['address_line2'])) $response .= ", \"line2\": \"" . $row['address_line2'] . "\"";
         if(!empty($row['address_line3'])) $response .= ", \"line3\": \"" . $row['address_line3'] . "\"";
         $response .= ", \"zipCode\": \"" . $row['address_zipCode'] . "\"";
-        $response .= ", \"city\": \"" . $row['address_city'] . "\", ";
+        $response .= ", \"city\": \"" . $row['address_city'] . "\"";
         $response .= ", \"country\": {";
         $response .= "\"id\": " . $row['country_id'] . ", ";
         $response .= "\"name\": \"" . $row['country_name'] . "\"";
