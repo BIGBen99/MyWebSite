@@ -20,7 +20,7 @@
     foreach($dbLink->query($query) as $row) {
       $response = "{";
       $response .= "\"id\": " . $row['id'];
-      $response .= "\"code\": \"" . $row['code'] . "\"";
+      $response .= ", \"code\": \"" . $row['code'] . "\"";
       if(!empty($row['siren'])) $response .= ", \"siren\": \"" . $row['siren'] . "\"";
       if(!empty($row['numeroInternedeClassement'])) $response .= ", \"numeroInternedeClassement\": \"" . $row['numeroInternedeClassement'] . "\"";
       if(!empty($row['siren']) && !empty($row['numeroInternedeClassement'])) $response .= ", \"siret\": \"" . $row['siren'] . $row['numeroInternedeClassement'] . "\"";
