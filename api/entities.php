@@ -4,8 +4,8 @@
   switch($_SERVER['REQUEST_METHOD']) {
     case 'GET':
       if(!empty($_GET["id"])) {
-        $code = $_GET["code"];
-        getEntity($dbLink, $code);
+        $id = $_GET["id"];
+        getEntity($dbLink, $id);
       } else {
         getEntities($dbLink);
       }
@@ -15,10 +15,11 @@
       break;
   }
 
-  function getEntity($dbLink, $code) {
-    $query = 'SELECT code, siren, numeroInternedeClassement, bc_entities.name as name, address_line1, address_line2, address_line3, address_zipCode, address_city, bc_country.id as country_id, bc_country.name as country_name,address_pliNonDistribuable, parent_id, subsidiaries FROM bc_entities LEFT JOIN bc_country ON bc_entities.address_country_id = bc_country.id WHERE bc_entities.code = ' . $code . ' LIMIT 1';
+  function getEntity($dbLink, $id) {
+    $query = 'SELECT bc_entities.id as id, code, siren, numeroInternedeClassement, bc_entities.name as name, address_line1, address_line2, address_line3, address_zipCode, address_city, bc_country.id as country_id, bc_country.name as country_name,address_pliNonDistribuable, parent_id, subsidiaries FROM bc_entities LEFT JOIN bc_country ON bc_entities.address_country_id = bc_country.id WHERE bc_entities.id = ' . $id . ' LIMIT 1';
     foreach($dbLink->query($query) as $row) {
       $response = "{";
+      $response .= "\"id\": " . $row['id'];
       $response .= "\"code\": \"" . $row['code'] . "\"";
       if(!empty($row['siren'])) $response .= ", \"siren\": \"" . $row['siren'] . "\"";
       if(!empty($row['numeroInternedeClassement'])) $response .= ", \"numeroInternedeClassement\": \"" . $row['numeroInternedeClassement'] . "\"";
@@ -38,7 +39,7 @@
         $response .= ", \"pliNonDistribuable\": " . ($row['address_pliNonDistribuable']==0?"false":"true");
         $response .= "}";
       }
-      if(!empty($row['parent_id'])) $response .= ", \"parentCode\": \"" . $row['parent_id'] . "\"";
+      if(!empty($row['parent_id'])) $response .= ", \"parentId\": " . $row['parent_id'];
       if(!empty($row['subsidiaries'])) $response .= ", \"subsidiaries\": " . $row['subsidiaries'];
       $response .= "},\n";
     }
