@@ -54,7 +54,7 @@
   }
 
   function getEntities($dbLink) {
-    $query = 'SELECT code, siren, numeroInternedeClassement, bc_entities.name as name, address_line1, address_line2, address_line3, address_zipCode, address_city, bc_country.id as country_id, bc_country.name as country_name, address_pliNonDistribuable, parent_id, subsidiaries FROM bc_entities LEFT JOIN bc_country ON bc_entities.address_country_id = bc_country.id';
+    $query = 'SELECT bc_entities.id as id, code, siren, numeroInternedeClassement, bc_entities.name as name, address_line1, address_line2, address_line3, address_zipCode, address_city, bc_country.id as country_id, bc_country.name as country_name, address_pliNonDistribuable, parent_id, subsidiaries FROM bc_entities LEFT JOIN bc_country ON bc_entities.address_country_id = bc_country.id';
     $response = "[\n";
     $noWhere = false;
     if(isset($_GET['name'])) {
@@ -75,11 +75,18 @@
         $query .= ' WHERE CONCAT(siren, numeroInternedeClassement) like "' . $_GET['siret'] . '%"';
       }
     }
-    if(isset($_GET['rootOnly']) && strtoupper($_GET['rootOnly']) == 'TRUE') {
+    if(isset($_GET['parentId'])) {
       if($noWhere) {
-        $query .= ' AND parent_id is NULL';
+        $query .= ' AND parent_id=' . $_GET['parentId'];
       } else {
-        $query .= ' WHERE parent_id is NULL';
+        $query .= ' WHERE parent_id='  . $_GET['parentId'];
+      }
+    }
+    if(isset($_GET['code'])) {
+      if($noWhere) {
+        $query .= ' AND code=' . $_GET['code'];
+      } else {
+        $query .= ' WHERE code='  . $_GET['code'];
       }
     }
     if(isset($_GET['sort']) && $_GET['sort'] == '-name') {
@@ -89,7 +96,8 @@
     }
     foreach($dbLink->query($query) as $row) {
       $response .= "{";
-      $response .= "\"code\": \"" . $row['code'] . "\"";
+      $response .= "\"id\": \"" . $row['id'];
+      $response .= ", \"code\": \"" . $row['code'] . "\"";
       if(!empty($row['siren'])) $response .= ", \"siren\": \"" . $row['siren'] . "\"";
       if(!empty($row['numeroInternedeClassement'])) $response .= ", \"numeroInternedeClassement\": \"" . $row['numeroInternedeClassement'] . "\"";
       if(!empty($row['siren']) && !empty($row['numeroInternedeClassement'])) $response .= ", \"siret\": \"" . $row['siren'] . $row['numeroInternedeClassement'] . "\"";
@@ -108,7 +116,7 @@
         $response .= ", \"pliNonDistribuable\": " . ($row['address_pliNonDistribuable']==0?"false":"true");
         $response .= "}";
       }
-      if(!empty($row['parent_id'])) $response .= ", \"parentCode\": \"" . $row['parent_id'] . "\"";
+      if(!empty($row['parent_id'])) $response .= ", \"parentId\": " . $row['parent_id'];
       if(!empty($row['subsidiaries'])) $response .= ", \"subsidiaries\": " . $row['subsidiaries'];
       $response .= "},\n";
     }
