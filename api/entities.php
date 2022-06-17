@@ -77,10 +77,14 @@
     }
     if(isset($_GET['parentId'])) {
       if($noWhere) {
-        $query .= ' AND parent_id=' . $_GET['parentId'];
+        $query .= ' AND parent_id';
       } else {
-        $query .= ' WHERE parent_id='  . $_GET['parentId'];
+        $query .= ' WHERE parent_id';
       }
+      if($_GET['parentId']=='null') {
+        $query .= ' is null';
+      } else {
+        $query .= '=' . $_GET['parentId'];
     }
     if(isset($_GET['code'])) {
       if($noWhere) {
