@@ -96,7 +96,7 @@
     }
     foreach($dbLink->query($query) as $row) {
       $response .= "{";
-      $response .= "\"id\": \"" . $row['id'];
+      $response .= "\"id\": " . $row['id'];
       $response .= ", \"code\": \"" . $row['code'] . "\"";
       if(!empty($row['siren'])) $response .= ", \"siren\": \"" . $row['siren'] . "\"";
       if(!empty($row['numeroInternedeClassement'])) $response .= ", \"numeroInternedeClassement\": \"" . $row['numeroInternedeClassement'] . "\"";
