@@ -85,6 +85,7 @@
         $query .= ' is null';
       } else {
         $query .= '=' . $_GET['parentId'];
+      }
     }
     if(isset($_GET['code'])) {
       if($noWhere) {
