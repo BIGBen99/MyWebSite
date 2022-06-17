@@ -3,7 +3,7 @@
 
   switch($_SERVER['REQUEST_METHOD']) {
     case 'GET':
-      if(!empty($_GET["code"])) {
+      if(!empty($_GET["id"])) {
         $code = $_GET["code"];
         getEntity($dbLink, $code);
       } else {
