@@ -58,7 +58,7 @@
     $response = "[\n";
     $noWhere = false;
     if(isset($_GET['name'])) {
-      $query .= ' WHERE name like "%' . $_GET['name'] . '%"';
+      $query .= ' WHERE bc_entities.name like "%' . $_GET['name'] . '%"';
       $noWhere = true;
     }
     if(isset($_GET['siren'])) {
