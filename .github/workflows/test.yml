@@ -25,3 +25,9 @@ jobs:
         
       - name: ls
         run: ls -lrt
+        
+      - name: cd
+        run: cd MyWebSite
+        
+      - name: ls
+        run: ls -lrt
