@@ -11,8 +11,5 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: repo actor
-        run: echo ${{ github.event.actor.display_login }}
-        
       - name: ssh
-        run: sshpass -p ${{ secrets.OVH_SSH_DEV_PASSWORD }} ssh -o StrictHostKeyChecking=no ${{ secrets.OVH_SSH_DEV_USER }}@${{ secrets.OVH_SSH_HOST }} -p ${{ secrets.OVH_SSH_PORT }} "rm -rv * && git clone --branch develop https://github.com/${{ github.event.actor.display_login }}/${{ github.event.repository.name }}.git && mv ${{ github.event.repository.name }}/* . && rm -rf ${{ github.event.repository.name }} && rm README.md"
+        run: sshpass -p ${{ secrets.OVH_SSH_DEV_PASSWORD }} ssh -o StrictHostKeyChecking=no ${{ secrets.OVH_SSH_DEV_USER }}@${{ secrets.OVH_SSH_HOST }} -p ${{ secrets.OVH_SSH_PORT }} "rm -rv * && git clone --branch develop https://github.com/BIGBen99/${{ github.event.repository.name }}.git && mv ${{ github.event.repository.name }}/* . && rm -rf ${{ github.event.repository.name }} && rm README.md"
