@@ -16,3 +16,6 @@ jobs:
       
       - name: check repo
         run: ls -lrt $GITHUB_WORKSPACE
+        
+      - name: secrets ?
+        run: echo $MY_SECRET
