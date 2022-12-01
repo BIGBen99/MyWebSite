@@ -1,0 +1,15 @@
+name: Continuous Deployment to OVH (Dev)
+
+on:
+  push:
+    branches: [develop]
+    
+  workflow_dispatch:
+  
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: ssh
+        run: sshpass -p ${{ secrets.OVH_SSH_DEV_PASSWORD }} ssh -o StrictHostKeyChecking=no ${{ secrets.OVH_SSH_DEV_USER }}@${{ secrets.OVH_SSH_HOST }} -p ${{ secrets.OVH_SSH_PORT }} "rm -rv * && git clone --branch develop https://github.com/BIGBen99/MyWebSite.git && mv MyWebSite/* . && rm -rf MyWebSite && rm README.md"
