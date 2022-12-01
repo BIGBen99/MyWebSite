@@ -19,3 +19,6 @@ jobs:
         
       - name: ls
         run: ls -lrt
+        
+      - name: git pull
+        run: git clone --branch develop git@github.com:BIGBen99/MyWebSite.git
