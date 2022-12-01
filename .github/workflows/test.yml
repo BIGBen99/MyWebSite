@@ -20,4 +20,4 @@ jobs:
       - name: ssh
         run: |
           sudo apt install sshpass
-          sshpass -p ${{ secrets.OVH_SSH_PASSWORD }} ssh ${{ secrets.OVH_SSH_USER }}@${{ secrets.OVH_SSH_HOST }} -p ${{ secrets.OVH_SSH_PORT }}
+          sshpass -p ${{ secrets.OVH_SSH_PASSWORD }} ssh ${{ secrets.OVH_SSH_USER }}@${{ secrets.OVH_SSH_HOST }} -p ${{ secrets.OVH_SSH_PORT }} > /dev/null
