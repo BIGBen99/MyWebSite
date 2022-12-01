@@ -17,5 +17,8 @@ jobs:
       - name: check repo
         run: ls -lrt $GITHUB_WORKSPACE
         
+      - name: install sshpass
+        run: apt install sshpass
+        
       - name: ssh
         run: sshpass ${{ secrets.OVH_SSH_PASSWORD }} ssh ${{ secrets.OVH_SSH_USER }}@${{ secrets.OVH_SSH_HOST }} -p ${{ secrets.OVH_SSH_PORT }}
