@@ -11,22 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Hello World !
-        run: echo Hello World !
-        
-      - name: pwd
-        run: pwd
-        
-      - name: ls
-        run: ls -lrt
-        
-      - name: git pull
-        run: git clone --branch develop https://github.com/BIGBen99/MyWebSite.git
-        
-      - name: ls
-        run: ls -lrt
-        
-      - name: cd & ls
-        run: |
-         cd MyWebSite
-         ls -lrt
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      
+      - name: check repo
+        run: ls -lrt $GITHUB_WORKSPACE
