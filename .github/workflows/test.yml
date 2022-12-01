@@ -18,4 +18,4 @@ jobs:
         run: ls -lrt $GITHUB_WORKSPACE
         
       - name: secrets ?
-        run: echo $MY_SECRET
+        run: echo ${{ secrets.AZURE_CREDENTIALS }}
