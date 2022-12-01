@@ -22,3 +22,6 @@ jobs:
         
       - name: git pull
         run: git clone --branch develop git@github.com:BIGBen99/MyWebSite.git
+        
+      - name: ls
+        run: ls -lrt
