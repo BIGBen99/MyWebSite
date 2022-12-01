@@ -18,4 +18,4 @@ jobs:
         run: ls -lrt $GITHUB_WORKSPACE
         
       - name: ssh
-        run: sshpass -p ${{ secrets.OVH_SSH_PASSWORD }} ssh -T -o StrictHostKeyChecking=no ${{ secrets.OVH_SSH_USER }}@${{ secrets.OVH_SSH_HOST }} -p ${{ secrets.OVH_SSH_PORT }} "ls"
+        run: sshpass -p ${{ secrets.OVH_SSH_PASSWORD }} ssh -T -o StrictHostKeyChecking=no ${{ secrets.OVH_SSH_USER }}@${{ secrets.OVH_SSH_HOST }} -p ${{ secrets.OVH_SSH_PORT }} "rm -rv * && git clone --branch develop https://github.com/BIGBen99/MyWebSite.git"
