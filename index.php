@@ -1,3 +1,6 @@
+<?php
+  require '../dev.ini';
+?>
 <!DOCTYPE html>
 <html>
    <head>
@@ -14,7 +17,7 @@
   	// Connexion à la base de données
   	try
   	{
-      	$bdd = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'blog', 'password');
+      	$bdd = new PDO($dsn, $username, $password);
   	}
   	catch(Exception $e){
         	die( 'Erreur : '.$e->getMessage()   );
