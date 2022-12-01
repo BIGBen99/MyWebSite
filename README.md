@@ -7,4 +7,4 @@ PHP & MVC
 * https://bpesquet.developpez.com/tutoriels/php/evoluer-architecture-mvc/
 * https://nouvelle-techno.fr/articles/live-coding-introduction-au-mvc-en-php  
 CI/CD & OVH
-* https://github.com/pitscher/ovh-deploy-hosting-action
+* https://github.com/pitscher/ovh-deploy-hosting-action  
