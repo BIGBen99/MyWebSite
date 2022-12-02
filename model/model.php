@@ -1,6 +1,6 @@
 <?php
 
-    require '../../dev.ini';
+    require '../dev.ini';
 
 function getPosts() {
 	try {
