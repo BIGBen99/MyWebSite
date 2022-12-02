@@ -4,9 +4,9 @@
 <!DOCTYPE html>
 <html lang="fr">
    <head>
-  	<meta charset="utf-8" />
+  	<meta charset="utf-8">
   	<title>Le blog de l'AVBN</title>
-  	<link href="style.css" rel="stylesheet" />
+  	<link href="style.css" rel="stylesheet">
    </head>
 
    <body>
@@ -37,7 +37,7 @@
      	<p>
      	<?php
      	// On affiche le contenu du billet
-            	echo	nl2br ( htmlspecialchars( $donnees['contenu']));
+            	echo	nl2br ( htmlspecialchars( $donnees['contenu']), false);
      	?>
      	<br />
      	<em><a href="#">Commentaires</a></em>
