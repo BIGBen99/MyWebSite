@@ -47,7 +47,7 @@ while (($row = $statement->fetch())) {
                 	<?php
                 	echo nl2br(htmlspecialchars($post['content']), false);
                 	?>
-                	<br />
+                	<br>
                 	<em><a href="#">Commentaires</a></em>
             	</p>
         	</div>
