@@ -37,7 +37,7 @@
      	<p>
      	<?php
      	// On affiche le contenu du billet
-            	echo	nl2br ( htmlspecialchars( $donnees['content']), false);
+            	echo	nl2br ( htmlspecialchars( $donnees['content']), true);
      	?>
      	<br />
      	<em><a href="#">Commentaires</a></em>
