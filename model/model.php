@@ -51,7 +51,7 @@ function getComments($dsn, $username, $password, $id) {
     return $comments;
 }
 
-function dbConnect() {
+function dbConnect($dsn, $username, $password) {
     try {
     	$database = new PDO($dsn, $username, $password);
 
