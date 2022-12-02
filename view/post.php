@@ -27,7 +27,7 @@
         foreach ($comments as $comment) {
         ?>
         <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['french_comment_date'] ?></p>
-        <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+        <p><?= nl2br(htmlspecialchars($comment['comment']), false) ?></p>
         <?php
         }
         ?>
