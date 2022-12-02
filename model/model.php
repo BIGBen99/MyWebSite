@@ -1,8 +1,5 @@
 <?php
-
-    require '../dev.ini';
-
-function getPosts() {
+function getPosts($dsn, $username, $password) {
 	try {
     	$database = new PDO($dsn, $username, $password);
 	} catch(Exception $e) {
