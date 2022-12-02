@@ -1,8 +1,7 @@
 <?php
-    require '../dev.ini';
-    require 'model/model.php';
+require '../dev.ini';
+require 'model/model.php';
 
-    $posts = getPosts($dsn, $username, $password);
+$posts = getPosts($dsn, $username, $password);
 
-    require 'view/homepage.php';
-?>
+require 'view/homepage.php';
