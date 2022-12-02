@@ -1,5 +1,5 @@
 <?php
-    require '../dev.init';
+    require '../dev.ini';
     require 'model/model.php';
 
     $post = getPosts($dsn, $username, $password);
