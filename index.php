@@ -24,20 +24,20 @@
   	}
 
   	// On récupère les 5 derniers billets
-  	$req = $bdd->query('SELECT id, titre, contenu, DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS date_creation_fr FROM billets ORDER BY date_creation DESC LIMIT 0, 5');
+  	$req = $bdd->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS date_creation_fr FROM posts ORDER BY creation_date DESC LIMIT 0, 5');
 
   	while ($donnees = $req->fetch())
   	{
   	?>
   	<div class="news">
      	<h3>
-        	<?php echo htmlspecialchars($donnees['titre']); ?>
+        	<?php echo htmlspecialchars($donnees['title']); ?>
         	<em>le <?php echo $donnees['date_creation_fr']; ?></em>
      	</h3>
      	<p>
      	<?php
      	// On affiche le contenu du billet
-            	echo	nl2br ( htmlspecialchars( $donnees['contenu']), false);
+            	echo	nl2br ( htmlspecialchars( $donnees['content']), false);
      	?>
      	<br />
      	<em><a href="#">Commentaires</a></em>
