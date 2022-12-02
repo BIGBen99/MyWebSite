@@ -21,3 +21,43 @@ function getPosts($dsn, $username, $password) {
     }
     return $posts;
 }
+
+function getPost($dsn, $username, $password, $id) {
+    try {
+    	$database = new PDO($dsn, $username, $password);
+    } catch(Exception $e) {
+    	die('Error : ' . $e->getMessage());
+    }
+
+    $statement = $database->query("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts WHERE id = " . $id);
+    while (($row = $statement->fetch())) {
+    	$post = [
+            'title' => $row['title'],
+            'french_creation_date' => $row['french_creation_date'],
+            'content' => $row['content'],
+            'id' => $row['id'],
+    	];
+    	return $post;
+    }
+}
+
+function getComments($dsn, $username, $password, $id) {
+    try {
+    	$database = new PDO($dsn, $username, $password);
+    } catch(Exception $e) {
+    	die('Error : ' . $e->getMessage());
+    }
+
+    $statement = $database->query("SELECT id, author, comment, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin%ss') AS french_comment_date FROM comments WHERE post_id = " . $id . " ORDER BY comment_date");
+    $comments = [];
+    while (($row = $statement->fetch())) {
+    	$comment = [
+            'author' => $row['author'],
+            'french_comment_date' => $row['french_comment_date'],
+            'comment' => $row['comment'],
+    	];
+
+    	$comments[] = $comment;
+    }
+    return $comments;
+}
