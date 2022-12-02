@@ -1,11 +1,7 @@
 <?php
 
 function getPosts($dsn, $username, $password) {
-    try {
-    	$database = new PDO($dsn, $username, $password);
-    } catch(Exception $e) {
-    	die('Error : ' . $e->getMessage());
-    }
+   	$database = dbConnect($dsn, $username, $password);
 
     $statement = $database->query("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts ORDER BY creation_date DESC LIMIT 0, 5");
     $posts = [];
@@ -23,11 +19,7 @@ function getPosts($dsn, $username, $password) {
 }
 
 function getPost($dsn, $username, $password, $id) {
-    try {
-    	$database = new PDO($dsn, $username, $password);
-    } catch(Exception $e) {
-    	die('Error : ' . $e->getMessage());
-    }
+    $database = dbConnect($dsn, $username, $password);
 
     $statement = $database->prepare("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts WHERE id = ?");
     $statement->execute([$id]);
@@ -42,11 +34,7 @@ function getPost($dsn, $username, $password, $id) {
 }
 
 function getComments($dsn, $username, $password, $id) {
-    try {
-    	$database = new PDO($dsn, $username, $password);
-    } catch(Exception $e) {
-    	die('Error : ' . $e->getMessage());
-    }
+    $database = dbConnect($dsn, $username, $password);
 
     $statement = $database->prepare("SELECT id, author, comment, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin%ss') AS french_comment_date FROM comments WHERE post_id = ? ORDER BY comment_date DESC");
     $statement->execute([$id]);
@@ -61,4 +49,14 @@ function getComments($dsn, $username, $password, $id) {
     	$comments[] = $comment;
     }
     return $comments;
+}
+
+function dbConnect() {
+    try {
+    	$database = new PDO($dsn, $username, $password);
+
+    	return $database;
+	} catch(Exception $e) {
+    	die('Error : '.$e->getMessage());
+	}
 }
