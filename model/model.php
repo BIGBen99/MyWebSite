@@ -36,7 +36,7 @@ function getPost($dsn, $username, $password, $id) {
         'title' => $row['title'],
         'french_creation_date' => $row['french_creation_date'],
         'content' => $row['content'],
-    ]
+    ];
 
   	return $post;
 }
