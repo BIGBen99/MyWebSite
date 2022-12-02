@@ -29,16 +29,16 @@ function getPost($dsn, $username, $password, $id) {
     	die('Error : ' . $e->getMessage());
     }
 
-    $statement = $database->query("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts WHERE id = " . $id);
-    while (($row = $statement->fetch())) {
-    	$post = [
-            'title' => $row['title'],
-            'french_creation_date' => $row['french_creation_date'],
-            'content' => $row['content'],
-            'id' => $row['id'],
-    	];
-    	return $post;
-    }
+    $statement = $database->prepare(""SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts WHERE id = ?");
+    $statement->execute([$id]);
+    $row = $statement->fetch();
+    $post = [
+        'title' => $row['title'],
+        'french_creation_date' => $row['french_creation_date'],
+        'content' => $row['content'],
+    ]
+
+  	return $post;
 }
 
 function getComments($dsn, $username, $password, $id) {
@@ -48,7 +48,8 @@ function getComments($dsn, $username, $password, $id) {
     	die('Error : ' . $e->getMessage());
     }
 
-    $statement = $database->query("SELECT id, author, comment, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin%ss') AS french_comment_date FROM comments WHERE post_id = " . $id . " ORDER BY comment_date");
+    $statement = $database->prepare("SELECT id, author, comment, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin%ss') AS french_comment_date FROM comments WHERE post_id = ? ORDER BY comment_date DESC");
+    $statement->execute([$id]);
     $comments = [];
     while (($row = $statement->fetch())) {
     	$comment = [
