@@ -29,7 +29,7 @@ function getPost($dsn, $username, $password, $id) {
     	die('Error : ' . $e->getMessage());
     }
 
-    $statement = $database->prepare(""SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts WHERE id = ?");
+    $statement = $database->prepare("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts WHERE id = ?");
     $statement->execute([$id]);
     $row = $statement->fetch();
     $post = [
