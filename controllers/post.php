@@ -3,10 +3,10 @@
 
 require_once 'model/model.php';
 
-function post(string $id)
+function post($dsn, $username, $password, $id)
 {
-	$post = getPost($id);
-	$comments = getComments($id);
+	$post = getPost($dsn, $username, $password, $id);
+	$comments = getComments($dsn, $username, $password, $id);
 
 	require 'view/post.php';
 }

@@ -18,5 +18,5 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
     	echo "Error 404 : la page que vous recherchez n'existe pas.";
 	}
 } else {
-	homepage();
+	homepage($dsn, $username, $password);
 }
