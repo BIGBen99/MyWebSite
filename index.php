@@ -2,7 +2,7 @@
   require '../dev.ini';
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="fr">
    <head>
   	<meta charset="utf-8" />
   	<title>Le blog de l'AVBN</title>
