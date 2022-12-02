@@ -15,7 +15,7 @@ foreach ($posts as $post) {
        	<p>
            	<?= nl2br(htmlspecialchars($post['content']), false); ?>
            	<br>
-           	<em><a href="post.php?id=<?= urlencode($post['id']) ?>">Commentaires</a></em>
+           	<em><a href="index.php?action=post&id=<?= urlencode($post['id']) ?>">Commentaires</a></em>
        	</p>
     </div>
 <?php
