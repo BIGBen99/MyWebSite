@@ -9,7 +9,7 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
     	if (isset($_GET['id']) && $_GET['id'] > 0) {
         	$id = $_GET['id'];
 
-        	post($id);
+        	post($dsn, $username, $password, $id);
     	} else {
         	echo 'Error : aucun identifiant de billet envoyé';
         	die;
