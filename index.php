@@ -37,15 +37,15 @@
      	<p>
      	<?php
      	// On affiche le contenu du billet
-            	echo	nl2br ( htmlspecialchars( $donnees['content']), true);
+            	echo	nl2br ( htmlspecialchars( $donnees['content']), false);
      	?>
-     	<br />
+     	<br>
      	<em><a href="#">Commentaires</a></em>
      	</p>
   	</div>
   	<?php
   	} // Fin de la boucle des billets
   	$req->closeCursor();
-  	?>
+    ?>
    </body>
 </html>
