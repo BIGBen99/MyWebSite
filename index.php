@@ -1,7 +1,7 @@
 <?php
 // index.php
 
-require '..dev.ini';
+require '../dev.ini';
 require_once 'controllers/add_comment.php';
 require_once 'controllers/homepage.php';
 require_once 'controllers/post.php';
