@@ -4,14 +4,14 @@
 function getComments($dsn, $username, $password, $post)
 {
 	$database = commentDbConnect($dsn, $username, $password);
-	$statement = $database->prepare("SELECT id, author, comment, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM comments WHERE post_id = ? ORDER BY comment_date DESC");
+	$statement = $database->prepare("SELECT id, author, comment, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin%ss') AS french_comment_date FROM comments WHERE post_id = ? ORDER BY comment_date DESC");
 	$statement->execute([$post]);
 
 	$comments = [];
 	while (($row = $statement->fetch())) {
     	$comment = [
         	'author' => $row['author'],
-        	'french_creation_date' => $row['french_creation_date'],
+        	'french_comment_date' => $row['french_comment_date'],
         	'comment' => $row['comment'],
     	];
 
