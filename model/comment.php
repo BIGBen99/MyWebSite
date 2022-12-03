@@ -30,7 +30,7 @@ function createComment($dsn, $username, $password, $post, $author, $comment)
 	return ($affectedLines > 0);
 }
 
-function commentDbConnect()
+function commentDbConnect($dsn, $username, $password)
 {
 	try {
     	$database = new PDO($dsn, $username, $password);
