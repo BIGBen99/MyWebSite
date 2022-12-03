@@ -14,6 +14,19 @@
     </p>
 </div>
 <h2>Commentaires</h2>
+<form action="index.php?action=addComment&id=<?= $post['id'] ?>" method="post">
+   <div>
+  	<label for="author">Auteur</label><br>
+  	<input type="text" id="author" name="author">
+   </div>
+   <div>
+  	<label for="comment">Commentaire</label><br>
+  	<textarea id="comment" name="comment"></textarea>
+   </div>
+   <div>
+  	<input type="submit">
+   </div>
+</form>
 <?php foreach ($comments as $comment) { ?>
     <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['french_comment_date'] ?></p>
     <p><?= nl2br(htmlspecialchars($comment['comment']), false) ?></p>

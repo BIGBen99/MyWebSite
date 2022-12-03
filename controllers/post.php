@@ -2,6 +2,7 @@
 // controllers/post.php
 
 require_once 'model/model.php';
+require_once 'model/comment.php';
 
 function post($dsn, $username, $password, $id)
 {

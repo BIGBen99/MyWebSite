@@ -28,27 +28,10 @@ function getPost($dsn, $username, $password, $id) {
         'title' => $row['title'],
         'french_creation_date' => $row['french_creation_date'],
         'content' => $row['content'],
+        'id' => $row['id'],
     ];
 
   	return $post;
-}
-
-function getComments($dsn, $username, $password, $id) {
-    $database = dbConnect($dsn, $username, $password);
-
-    $statement = $database->prepare("SELECT id, author, comment, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin%ss') AS french_comment_date FROM comments WHERE post_id = ? ORDER BY comment_date DESC");
-    $statement->execute([$id]);
-    $comments = [];
-    while (($row = $statement->fetch())) {
-    	$comment = [
-            'author' => $row['author'],
-            'french_comment_date' => $row['french_comment_date'],
-            'comment' => $row['comment'],
-    	];
-
-    	$comments[] = $comment;
-    }
-    return $comments;
 }
 
 function dbConnect($dsn, $username, $password) {
