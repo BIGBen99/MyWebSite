@@ -1,24 +1,29 @@
 <?php
 // model/comment.php
 
-function getComments($dsn, $username, $password, $post)
-{
-	$database = commentDbConnect($dsn, $username, $password);
-	$statement = $database->prepare("SELECT id, author, comment, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin%ss') AS french_comment_date FROM comments WHERE post_id = ? ORDER BY comment_date DESC");
-	$statement->execute([$post]);
+class Comment {
+    public string $author;
+    public string $frenchCreationDate;
+    public string $content;
+}
 
-	$comments = [];
-	while (($row = $statement->fetch())) {
-    	$comment = [
-        	'author' => $row['author'],
-        	'french_comment_date' => $row['french_comment_date'],
-        	'comment' => $row['comment'],
-    	];
+function getComments(string $dsn, string $username, string $password, string $postId): array
+{
+    $database = commentDbConnect($dsn, $username, $password);
+    $statement = $database->prepare("SELECT id, author, comment, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin%ss') AS french_comment_date FROM comments WHERE post_id = ? ORDER BY comment_date DESC");
+    $statement->execute([$postId]);
+
+    $comments = [];
+    while (($row = $statement->fetch())) {
+    	$comment = new Comment();
+	$comment->author = $row['author'];
+	$comment->frenchCreationDate = $row['french_comment_date'];
+	$comment->content = $row['comment'];
 
     	$comments[] = $comment;
-	}
+    }
 
-	return $comments;
+    return $comments;
 }
 
 function createComment($dsn, $username, $password, $post, $author, $comment)
