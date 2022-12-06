@@ -1,6 +1,6 @@
 <?php
 
-function getPosts($dsn, $username, $password) {
+function getPosts(string $dsn, string $username, string $password) {
    	$database = dbConnect($dsn, $username, $password);
 
     $statement = $database->query("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts ORDER BY creation_date DESC LIMIT 0, 5");
@@ -18,7 +18,7 @@ function getPosts($dsn, $username, $password) {
     return $posts;
 }
 
-function getPost($dsn, $username, $password, $id) {
+function getPost(string $dsn, string $username, string $password, int $id) {
     $database = dbConnect($dsn, $username, $password);
 
     $statement = $database->prepare("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts WHERE id = ?");
@@ -34,7 +34,7 @@ function getPost($dsn, $username, $password, $id) {
   	return $post;
 }
 
-function dbConnect($dsn, $username, $password) {
+function dbConnect(string $dsn, string $username, string $password) {
     $database = new PDO($dsn, $username, $password);
 
     return $database;
