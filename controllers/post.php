@@ -1,7 +1,7 @@
 <?php
 // controllers/post.php
 
-require_once 'model/model.php';
+require_once 'model/post.php';
 require_once 'model/comment.php';
 
 function post(string $dsn, string $username, string $password, int $id)
