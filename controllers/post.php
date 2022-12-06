@@ -4,7 +4,7 @@
 require_once 'model/model.php';
 require_once 'model/comment.php';
 
-function post($dsn, $username, $password, $id)
+function post(string $dsn, string $username, string $password, int $id)
 {
 	$post = getPost($dsn, $username, $password, $id);
 	$comments = getComments($dsn, $username, $password, $id);
