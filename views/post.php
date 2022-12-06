@@ -6,15 +6,15 @@
 
 <div class="news">
     <h3>
-        <?= htmlspecialchars($post['title']) ?>
-        <em>le <?= $post['french_creation_date'] ?></em>
+        <?= htmlspecialchars($post->title) ?>
+        <em>le <?= $post->frenchCreationDate ?></em>
     </h3>
     <p>
-        <?= nl2br(htmlspecialchars($post['content']), false) ?>
+        <?= nl2br(htmlspecialchars($post->content), false) ?>
     </p>
 </div>
 <h2>Commentaires</h2>
-<form action="index.php?action=addComment&id=<?= $post['id'] ?>" method="post">
+<form action="index.php?action=addComment&id=<?= $post->id ?>" method="post">
    <div>
   	<label for="author">Auteur</label><br>
   	<input type="text" id="author" name="author">
