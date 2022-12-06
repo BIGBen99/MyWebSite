@@ -14,7 +14,7 @@ class PostRepository {
     function getPost(string $dsn, string $username, string $password, int $id): Post {
         $this->dbConnect($this, $dsn, $username, $password);
 
-        $statement = $repository->database->prepare("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts WHERE id = ?");
+        $statement = $this->database->prepare("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts WHERE id = ?");
         $statement->execute([$id]);
         $row = $statement->fetch();
         $post = new Post();
@@ -29,7 +29,7 @@ class PostRepository {
     function getPosts(string $dsn, string $username, string $password): array {
         $this->dbConnect($this, $dsn, $username, $password);
 
-        $statement = $repository->database->query("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts ORDER BY creation_date DESC LIMIT 0, 5");
+        $statement = $this->database->query("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts ORDER BY creation_date DESC LIMIT 0, 5");
         $posts = [];
         while (($row = $statement->fetch())) {
             $post = new Post();
