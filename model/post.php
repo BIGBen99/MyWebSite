@@ -10,42 +10,42 @@ class Post {
 
 class PostRepository {
     public ?PDO $database = null;
-}
 
-function getPosts(PostRepository $repository, string $dsn, string $username, string $password): array {
-   	dbConnect($repository, $dsn, $username, $password);
+    function getPost(string $dsn, string $username, string $password, int $id): Post {
+        dbConnect($this, $dsn, $username, $password);
 
-    $statement = $repository->database->query("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts ORDER BY creation_date DESC LIMIT 0, 5");
-    $posts = [];
-    while (($row = $statement->fetch())) {
+        $statement = $repository->database->prepare("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts WHERE id = ?");
+        $statement->execute([$id]);
+        $row = $statement->fetch();
         $post = new Post();
         $post->id = $row['id'];
         $post->title = $row['title'];
         $post->content = $row['content'];
         $post->frenchCreationDate = $row['french_creation_date'];
-      
-        $posts[] = $post;
+
+        return $post;
     }
-    return $posts;
-}
 
-function getPost(PostRepository $repository, string $dsn, string $username, string $password, int $id): Post {
-    dbConnect($repository, $dsn, $username, $password);
+    function getPosts(string $dsn, string $username, string $password): array {
+        dbConnect($this, $dsn, $username, $password);
 
-    $statement = $repository->database->prepare("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts WHERE id = ?");
-    $statement->execute([$id]);
-    $row = $statement->fetch();
-    $post = new Post();
-    $post->id = $row['id'];
-    $post->title = $row['title'];
-    $post->content = $row['content'];
-    $post->frenchCreationDate = $row['french_creation_date'];
+        $statement = $repository->database->query("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts ORDER BY creation_date DESC LIMIT 0, 5");
+        $posts = [];
+        while (($row = $statement->fetch())) {
+            $post = new Post();
+            $post->id = $row['id'];
+            $post->title = $row['title'];
+            $post->content = $row['content'];
+            $post->frenchCreationDate = $row['french_creation_date'];
 
-  	return $post;
-}
+            $posts[] = $post;
+        }
+        return $posts;
+    }
 
-function dbConnect(PostRepository $repository, string $dsn, string $username, string $password) {
-    if ($repository->database === null) {
-        $repository->database = new PDO($dsn, $username, $password);
+    function dbConnect(PostRepository $repository, string $dsn, string $username, string $password) {
+        if ($repository->database === null) {
+            $repository->database = new PDO($dsn, $username, $password);
+        }
     }
 }
