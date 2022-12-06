@@ -14,7 +14,7 @@ try {
 	
 				post($dsn, $username, $password, $id);
 			} else {
-				throw new Exception('Aucun identifiant de billet envoyé')
+				throw new Exception('Aucun identifiant de billet envoyé');
 			}
 		} elseif ($_GET['action'] === 'addComment') {
 			if (isset($_GET['id']) && $_GET['id'] > 0) {
@@ -22,10 +22,10 @@ try {
 	
 				addComment($dsn, $username, $password, $id, $_POST);
 			} else {
-				throw new Exception('Aucun identifiant de billet envoyé')
+				throw new Exception('Aucun identifiant de billet envoyé');
 			}
 		} else {
-			throw new Exception("La page que vous recherchez n'existe pas.")
+			throw new Exception("La page que vous recherchez n'existe pas.");
 		}
 	} else {
 		homepage($dsn, $username, $password);
