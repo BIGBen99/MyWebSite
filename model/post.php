@@ -8,10 +8,14 @@ class Post {
     public string $frenchCreationDate;
 }
 
-function getPosts(string $dsn, string $username, string $password) {
-   	$database = dbConnect($dsn, $username, $password);
+class PostRepository {
+    public ?PDO $database = null;
+}
 
-    $statement = $database->query("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts ORDER BY creation_date DESC LIMIT 0, 5");
+function getPosts(PostRepository $repository, string $dsn, string $username, string $password): array {
+   	dbConnect($repository, $dsn, $username, $password);
+
+    $statement = $repository->database->query("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts ORDER BY creation_date DESC LIMIT 0, 5");
     $posts = [];
     while (($row = $statement->fetch())) {
         $post = new Post();
@@ -25,10 +29,10 @@ function getPosts(string $dsn, string $username, string $password) {
     return $posts;
 }
 
-function getPost(string $dsn, string $username, string $password, int $id) {
-    $database = dbConnect($dsn, $username, $password);
+function getPost(PostRepository $repository, string $dsn, string $username, string $password, int $id): Post {
+    dbConnect($repository, $dsn, $username, $password);
 
-    $statement = $database->prepare("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts WHERE id = ?");
+    $statement = $repository->database->prepare("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts WHERE id = ?");
     $statement->execute([$id]);
     $row = $statement->fetch();
     $post = new Post();
@@ -40,8 +44,8 @@ function getPost(string $dsn, string $username, string $password, int $id) {
   	return $post;
 }
 
-function dbConnect(string $dsn, string $username, string $password) {
-    $database = new PDO($dsn, $username, $password);
-
-    return $database;
+function dbConnect(PostRepository $repository, string $dsn, string $username, string $password) {
+    if ($repository->database === null) {
+        $repository->database = new PDO($dsn, $username, $password);
+    }
 }
