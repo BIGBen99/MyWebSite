@@ -15,6 +15,7 @@ function getPosts(string $dsn, string $username, string $password) {
     $posts = [];
     while (($row = $statement->fetch())) {
         $post = new Post();
+        $post->id = $row['id'];
         $post->title = $row['title'];
         $post->content = $row['content'];
         $post->frenchCreationDate = $row['french_creation_date'];
