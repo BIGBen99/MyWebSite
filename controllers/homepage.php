@@ -4,7 +4,8 @@
 require_once 'model/post.php';
 
 function homepage(string $dsn, string $username, string $password) {
-	$posts = getPosts($dsn, $username, $password);
+    $postRepository = new PostRepository();
+    $posts = $postRepository->getPosts($dsn, $username, $password);
 
-	require 'views/homepage.php';
+    require 'views/homepage.php';
 }
