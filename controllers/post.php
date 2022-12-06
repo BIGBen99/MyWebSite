@@ -9,5 +9,5 @@ function post($dsn, $username, $password, $id)
 	$post = getPost($dsn, $username, $password, $id);
 	$comments = getComments($dsn, $username, $password, $id);
 
-	require 'view/post.php';
+	require 'views/post.php';
 }
