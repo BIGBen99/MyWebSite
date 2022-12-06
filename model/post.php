@@ -42,10 +42,11 @@ class PostRepository {
         }
         return $posts;
     }
+}
 
-    function dbConnect(PostRepository $repository, string $dsn, string $username, string $password) {
-        if ($repository->database === null) {
-            $repository->database = new PDO($dsn, $username, $password);
-        }
+function dbConnect(PostRepository $repository, string $dsn, string $username, string $password) {
+    if ($repository->database === null) {
+        $repository->database = new PDO($dsn, $username, $password);
     }
 }
+
