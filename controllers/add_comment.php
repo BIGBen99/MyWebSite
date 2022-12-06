@@ -3,7 +3,7 @@
 
 require_once 'model/comment.php';
 
-function addComment($dsn, $username, $password, string $post, array $input)
+function addComment(string $dsn, string $username, string $password, string $post, array $input)
 {
     $author = null;
     $comment = null;
