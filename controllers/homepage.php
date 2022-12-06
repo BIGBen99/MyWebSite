@@ -3,7 +3,7 @@
 
 require_once 'model/model.php';
 
-function homepage($dsn, $username, $password) {
+function homepage(string $dsn, string $username, string $password) {
 	$posts = getPosts($dsn, $username, $password);
 
 	require 'views/homepage.php';
