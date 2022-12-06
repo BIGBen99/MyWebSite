@@ -31,5 +31,7 @@ try {
 		homepage($dsn, $username, $password);
 	}
 } catch (Exception $e) {
-	echo 'Error : '.$e->getMessage();
+    $errorMessage = $e->getMessage();
+	
+    require 'view/error.php';
 }
