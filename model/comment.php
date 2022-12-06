@@ -32,11 +32,7 @@ function createComment($dsn, $username, $password, $post, $author, $comment)
 
 function commentDbConnect($dsn, $username, $password)
 {
-	try {
-    	$database = new PDO($dsn, $username, $password);
+    $database = new PDO($dsn, $username, $password);
 
-    	return $database;
-	} catch(Exception $e) {
-    	die('Error : '.$e->getMessage());
-	}
+    return $database;
 }
