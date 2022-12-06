@@ -9,13 +9,13 @@ foreach ($posts as $post) {
 ?>
 	<div class="news">
        	<h3>
-           	<?= htmlspecialchars($post['title']); ?>
-           	<em>le <?= $post['french_creation_date']; ?></em>
+           	<?= htmlspecialchars($post->title); ?>
+           	<em>le <?= $post->frenchCreationDate; ?></em>
        	</h3>
        	<p>
-           	<?= nl2br(htmlspecialchars($post['content']), false); ?>
+           	<?= nl2br(htmlspecialchars($post->content), false); ?>
            	<br>
-           	<em><a href="index.php?action=post&id=<?= urlencode($post['id']) ?>">Commentaires</a></em>
+           	<em><a href="index.php?action=post&id=<?= urlencode($post->id) ?>">Commentaires</a></em>
        	</p>
     </div>
 <?php
