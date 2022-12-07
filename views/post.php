@@ -28,7 +28,7 @@
    </div>
 </form>
 <?php foreach ($comments as $comment) { ?>
-    <p><strong><?= htmlspecialchars($comment->author) ?></strong> le <?= $comment->frenchCreationDate ?></p>
+    <p><strong><?= htmlspecialchars($comment->author) ?></strong> le <?= $comment->frenchCreationDate ?> (<a href="index.php?action=modifyComment&id=<?= urlencode($comment->id) ?>">modifier</a>)</p>
     <p><?= nl2br(htmlspecialchars($comment->content), false) ?></p>
 <?php } ?>
 <?php $content = ob_get_clean(); ?>
