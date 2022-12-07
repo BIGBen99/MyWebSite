@@ -12,7 +12,7 @@ function post(string $dsn, string $username, string $password, int $id) {
     $post = $postRepository->getPost($dsn, $username, $password, $id);
     
     $commentRepository->connection = new DatabaseConnection();
-    $comments = getComments($dsn, $username, $password, $id);
+    $comments = $commentRepository->getComments($dsn, $username, $password, $id);
 
     require 'views/post.php';
 }
