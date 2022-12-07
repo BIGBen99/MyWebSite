@@ -3,8 +3,7 @@
 
 require_once 'model/comment.php';
 
-function addComment(string $dsn, string $username, string $password, string $post, array $input)
-{
+function addComment(string $dsn, string $username, string $password, string $post, array $input) {
     $author = null;
     $comment = null;
     if (!empty($input['author']) && !empty($input['comment'])) {
@@ -14,7 +13,9 @@ function addComment(string $dsn, string $username, string $password, string $pos
     	throw new Exception('Les données du formulaire sont invalides.');
     }
 
-    $success = createComment($dsn, $username, $password, $post, $author, $comment);
+    $commentRepository = new CommentRepository();
+    $commentRepository->connection = new DatabaseConnection();
+    $success = $commentRepository->createComment($dsn, $username, $password, $post, $author, $comment);
     if (!$success) {
     	throw new Exception('Impossible d\'ajouter le commentaire !');
     } else {
