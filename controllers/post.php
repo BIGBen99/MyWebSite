@@ -6,6 +6,7 @@ require_once 'model/comment.php';
 
 function post(string $dsn, string $username, string $password, int $id) {
     $postRepository = new PostRepository();
+    $postRepository->connection = new DatabaseConnection();
     $post = $postRepository->getPost($dsn, $username, $password, $id);
     $comments = getComments($dsn, $username, $password, $id);
 
