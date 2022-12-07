@@ -4,6 +4,7 @@
 require_once 'lib/database.php';
 
 class Comment {
+    public int $id;
     public string $author;
     public string $frenchCreationDate;
     public string $content;
@@ -19,6 +20,7 @@ class CommentRepository {
         $comments = [];
         while (($row = $statement->fetch())) {
     	    $comment = new Comment();
+	    $comment->id = $row['id'];
 	    $comment->author = $row['author'];
 	    $comment->frenchCreationDate = $row['french_comment_date'];
 	    $comment->content = $row['comment'];
@@ -29,10 +31,15 @@ class CommentRepository {
         return $comments;
     }
 
-    function createComment($dsn, $username, $password, $post, $author, $comment) {
+    function createComment($dsn, $username, $password, $postId, $author, $comment) {
 	$statement = $this->connection->getConnection($dsn, $username, $password)->prepare('INSERT INTO comments(post_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())');
-	$affectedLines = $statement->execute([$post, $author, $comment]);
+	$affectedLines = $statement->execute([$postId, $author, $comment]);
 
 	return ($affectedLines > 0);
+    }
+	
+    function updateComment($dsn, $username, $password, $commentId, $comment) {
+	$statement = $this->connection->getConnection($dsn, $username, $password)->prepare('UPDATE comments SET comment = ?, comment_date = NOW() WHERE id = ?');
+	$statement->execute([$comment, $commentId]);
     }
 }
