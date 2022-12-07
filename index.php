@@ -18,12 +18,20 @@ try {
 			}
 		} elseif ($_GET['action'] === 'addComment') {
 			if (isset($_GET['id']) && $_GET['id'] > 0) {
-				$id = $_GET['id'];
+				$postId = $_GET['id'];
 	
-				addComment($dsn, $username, $password, $id, $_POST);
+				addComment($dsn, $username, $password, $postId, $_POST);
 			} else {
 				throw new Exception('Aucun identifiant de billet envoyé');
 			}
+		} elseif ($_GET['action'] === 'modifyComment') {
+		    if (isset($_GET['id']) && $_GET['id'] > 0) {
+			$commentId = $_GET['id'];
+			
+		        modifyComment($dsn, $username, $password, $commentId, $_GET);
+		    } else {
+		        throw new Exception('Aucun identifiant de commentaire envoyé');
+		    }
 		} else {
 			throw new Exception("La page que vous recherchez n'existe pas.");
 		}
