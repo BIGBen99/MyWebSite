@@ -1,6 +1,8 @@
 <?php
 // model/post.php
 
+require_once 'lib/database.php';
+
 class Post {
     public int $id;
     public string $title;
@@ -9,12 +11,10 @@ class Post {
 }
 
 class PostRepository {
-    public ?PDO $database = null;
+    public DatabaseConnection $connection;
 
     function getPost(string $dsn, string $username, string $password, int $id): Post {
-        $this->dbConnect($dsn, $username, $password);
-
-        $statement = $this->database->prepare("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts WHERE id = ?");
+        $statement = $this->connection->getConnection($dsn, $username, $password)->prepare("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts WHERE id = ?");
         $statement->execute([$id]);
         $row = $statement->fetch();
         $post = new Post();
@@ -27,9 +27,7 @@ class PostRepository {
     }
 
     function getPosts(string $dsn, string $username, string $password): array {
-        $this->dbConnect($dsn, $username, $password);
-
-        $statement = $this->database->query("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts ORDER BY creation_date DESC LIMIT 0, 5");
+        $statement = $this->connection->getConnection($dsn, $username, $password)->query("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts ORDER BY creation_date DESC LIMIT 0, 5");
         $posts = [];
         while (($row = $statement->fetch())) {
             $post = new Post();
@@ -41,11 +39,5 @@ class PostRepository {
             $posts[] = $post;
         }
         return $posts;
-    }
-
-    function dbConnect(string $dsn, string $username, string $password) {
-        if ($this->database === null) {
-            $this->database = new PDO($dsn, $username, $password);
-        }
     }
 }
