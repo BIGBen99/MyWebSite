@@ -12,7 +12,7 @@ class PostRepository {
     public ?PDO $database = null;
 
     function getPost(string $dsn, string $username, string $password, int $id): Post {
-        $this->dbConnect($this, $dsn, $username, $password);
+        $this->dbConnect($dsn, $username, $password);
 
         $statement = $this->database->prepare("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts WHERE id = ?");
         $statement->execute([$id]);
@@ -27,7 +27,7 @@ class PostRepository {
     }
 
     function getPosts(string $dsn, string $username, string $password): array {
-        $this->dbConnect($this, $dsn, $username, $password);
+        $this->dbConnect($dsn, $username, $password);
 
         $statement = $this->database->query("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts ORDER BY creation_date DESC LIMIT 0, 5");
         $posts = [];
@@ -43,9 +43,9 @@ class PostRepository {
         return $posts;
     }
 
-    function dbConnect(PostRepository $repository, string $dsn, string $username, string $password) {
-        if ($repository->database === null) {
-            $repository->database = new PDO($dsn, $username, $password);
+    function dbConnect(string $dsn, string $username, string $password) {
+        if ($this->database === null) {
+            $this->database = new PDO($dsn, $username, $password);
         }
     }
 }
