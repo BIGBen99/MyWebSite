@@ -1,5 +1,13 @@
 # MyWebSite
 
+Model : User
+
+.createUser(email, password = null)
+.getUser(userId)
+.getUsers()
+.updateUser(userId, email)
+.deleteUser(userId)
+
 Liens externes
 ==============
 PHP & MVC
